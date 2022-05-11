@@ -1,0 +1,31 @@
+{
+  "name": "bicom_academy_nodejs",
+  "version": "1.0.0",
+  "description": "Aqui comienza",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sloty00/bicom_academy_nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sloty00/bicom_academy_nodejs/issues"
+  },
+  "homepage": "https://github.com/sloty00/bicom_academy_nodejs#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16"
+  }
+}
