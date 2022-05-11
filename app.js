@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 //para poder trabajar con cookies
-//app.use(cookieParser)
+app.use(cookieParser())
 
 //para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))

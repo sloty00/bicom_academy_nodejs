@@ -3,6 +3,7 @@ const bcryptjs = require('bcryptjs');
 const conexion = require('../database/db');
 const {promisify} = require('util');
 const { ifError } = require('assert');
+const { resourceLimits } = require('worker_threads');
 
 exports.register = async (req, res)=>{
     try {
@@ -29,11 +30,24 @@ exports.login = async (req, res)=>{
         const pass = req.body.pass
 
         if(!user || !pass){
-            res.render('login',{
-                alert:true,
-                alertTitle: "Advertencia",
-                alertMessage: "Ingrese un Usuario y Contraseña",
-                ruta: 'login',
+            res.render('login');
+        } else {
+            conexion.query('SELECT * FROM tbl_acceso WHERE a_cuenta = ?', [user], async (error, result)=>{
+                if( result.length == 0 || ! (await bcryptjs.compare(pass, result[0].pass)) ){
+                    res.render('login');
+                }else{
+                    const id = result[0].id
+                    const token = jwt.sign({id:id}, process.env.JWT_SECRET, {
+                        expiresIn: process.env.JWT_TIME_EXPIRE
+                    })
+
+                    const cookiesOptions = {
+                        expires: new Date(Date.now()+process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+                        httpOnly: true
+                    }
+                    res.cookie('jwt', token, cookiesOptions)
+                    res.render('/')
+                }
             })
         }
     } catch (error) {
