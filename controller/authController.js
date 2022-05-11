@@ -1,18 +1,21 @@
-const jwt = require('jsonwebtoken');
-const bcryptjs = require('bcryptjs');
-const conexion = require('../database/db');
-const {promisify} = require('util');
-const { ifError } = require('assert');
-const { resourceLimits } = require('worker_threads');
+const express = require('express');
+const session = require('express-session');
+const conexion = require('../database/db')
+const {promisify} = require('util')
+const app = express();
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 
 exports.register = async (req, res)=>{
     try {
         const user = req.body.user
         const pass = req.body.pass
         const type = 1
-        let passHash = await bcryptjs.hash(pass, 8);
-        //console.log(user + " " + passHash + " " + type);
-        conexion.query('INSERT INTO tbl_acceso SET ?', {a_cuenta:user, a_password:passHash, fk_tipo:type}, (error, result)=>{
+
+        conexion.query('INSERT INTO tbl_acceso SET ?', {a_cuenta:user, a_password:pass, fk_tipo:type}, (error, result)=>{
             if(error){
                 console.log(error);
             }else{
@@ -29,28 +32,41 @@ exports.login = async (req, res)=>{
         const user = req.body.user
         const pass = req.body.pass
 
-        if(!user || !pass){
-            res.render('login');
+        if (user && pass) {
+            // Execute SQL query that'll select the account from the database based on the specified username and password
+            conexion.query('SELECT * FROM tbl_acceso WHERE a_cuenta = ? AND a_password = ?', [user, pass], function(error, results) {
+                // If there is an issue with the query, output the error
+                if (error) throw error;
+                // If the account exists
+                if (results.length > 0) {
+                    // Authenticate the user
+                    req.session.loggedin = true;
+                    req.session.user = user;
+                    // Redirect to home page
+                    res.redirect('/');
+                } else {
+                    res.send('Incorrect Username and/or Password!');
+                }			
+                res.end();
+            });
         } else {
-            conexion.query('SELECT * FROM tbl_acceso WHERE a_cuenta = ?', [user], async (error, result)=>{
-                if( result.length == 0 || ! (await bcryptjs.compare(pass, result[0].pass)) ){
-                    res.render('login');
-                }else{
-                    const id = result[0].id
-                    const token = jwt.sign({id:id}, process.env.JWT_SECRET, {
-                        expiresIn: process.env.JWT_TIME_EXPIRE
-                    })
-
-                    const cookiesOptions = {
-                        expires: new Date(Date.now()+process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-                        httpOnly: true
-                    }
-                    res.cookie('jwt', token, cookiesOptions)
-                    res.render('/')
-                }
-            })
+            res.send('Please enter Username and Password!');
+            res.end();
         }
     } catch (error) {
-        console.log(error);
+        
     }
 }
+
+// http://localhost:3000/home
+app.get('/home', function(request, response) {
+	// If the user is loggedin
+	if (request.session.loggedin) {
+		// Output username
+		response.send('Welcome back, ' + request.session.username + '!');
+	} else {
+		// Not logged in
+		response.send('Please login to view this page!');
+	}
+	response.end();
+});
