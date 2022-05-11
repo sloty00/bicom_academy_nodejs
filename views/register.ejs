@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Registrarse en Bicom Academy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+
+  </head>
+  <body class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="form-signin text-center shadow-lg p3 mb-5">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white"> Registrarse </div>
+                    <div class="card-body text-primary">
+                        <form action="/register" method="POST">                
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="user", name="user" placeholder="Nombre Usuario">
+                                <label for="user">Cuenta Usuario</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="pass", name="pass" placeholder="Password">
+                                <label for="pass">Contraseña</label>
+                            </div>
+                            <div class="card-footer bg_transparent boder-primary">
+                                <a href="/" class="btn btn-secondary">Cancelar</a>
+                                <br>
+                                <button type="submit" class="btn btn-primary" type="submit">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
