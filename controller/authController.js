@@ -43,7 +43,7 @@ exports.login = async (req, res)=>{
                     req.session.loggedin = true;
                     req.session.user = user;
                     // Redirect to home page
-                    res.redirect('/');
+                    res.redirect('index');
                 } else {
                     res.send('Incorrect Username and/or Password!');
                 }			
@@ -58,15 +58,14 @@ exports.login = async (req, res)=>{
     }
 }
 
-// http://localhost:3000/home
-app.get('/home', function(request, response) {
-	// If the user is loggedin
-	if (request.session.loggedin) {
+exports.permiso = async (req, res)=>{
+    // If the user is loggedin
+	if (req.session.loggedin) {
 		// Output username
-		response.send('Welcome back, ' + request.session.username + '!');
+		res.send('Welcome back, ' + req.session.username + '!');
 	} else {
 		// Not logged in
-		response.send('Please login to view this page!');
+		res.send('Please login to view this page!');
 	}
-	response.end();
-});
+	res.end();
+}
