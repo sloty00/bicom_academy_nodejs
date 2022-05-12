@@ -13,14 +13,28 @@
 
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/bs-switches.css" type="text/css" />
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="css/colors.php?color=0C1CCC" type="text/css" />
+  
+    <!-- Articles Demo Specific Stylesheet -->
+    <link rel="stylesheet" href="demos/articles/articles.css" type="text/css" />
+    <link rel="stylesheet" href="demos/articles/css/fonts.css" type="text/css" />
     
   </head>
   <body class="text-center">
-    <main class="form-signin text-center shadow-lg p3 mb-5">
+    <main class="form-signin text-center shadow-lg p3 mb-5"><br>
+      <img class="mb-4" src="img/logo_bicom.png" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Acceso</h1>
+    </br>
       <form id="form_login" action="/login" method="POST">
-        <img class="mb-4" src="img/logo_bicom.png" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Acceso</h1>
-
         <div class="form-floating">
           <input type="text" class="form-control" id="user", name="user" placeholder="Nombre Usuario">
           <label for="user">Cuenta Usuario</label>
@@ -32,9 +46,10 @@
 
         <div class="checkbox mb-3">
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login con Google</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login con Facebook</button>
       </form>
-      <br>
       <a href="/register" type="button" class="w-100 btn btn-lg btn-primary">Registrarse</a>
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -51,5 +66,38 @@
         })
       </script>
     <% } %>
+
+    <!-- FIREBASE SCRIPT-->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDbUpenNnMSwJ20m5BO7vfq5bO6-FRl0Uk",
+        authDomain: "bicom-academy.firebaseapp.com",
+        projectId: "bicom-academy",
+        storageBucket: "bicom-academy.appspot.com",
+        messagingSenderId: "947135584285",
+        appId: "1:947135584285:web:dc31e7cdf922b4c8a6cef4",
+        measurementId: "G-YRGQ2PZ88F"
+      };
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <!-- END FIREBASE SCRIPT-->
+
+    	<!-- External JavaScripts
+	============================================= -->
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
   </body>
 </html>
