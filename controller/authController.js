@@ -1,13 +1,4 @@
-const express = require('express');
-const session = require('express-session');
 const conexion = require('../database/db')
-const {promisify} = require('util')
-const app = express();
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}));
 
 exports.register = async (req, res)=>{
     try {
@@ -34,38 +25,40 @@ exports.login = async (req, res)=>{
 
         if (user && pass) {
             // Execute SQL query that'll select the account from the database based on the specified username and password
-            conexion.query('SELECT * FROM tbl_acceso WHERE a_cuenta = ? AND a_password = ?', [user, pass], function(error, results) {
+            conexion.query('SELECT * FROM tbl_acceso WHERE a_cuenta = ? AND a_password = ?', [user, pass], function(error, result) {
                 // If there is an issue with the query, output the error
                 if (error) throw error;
                 // If the account exists
-                if (results.length > 0) {
+                if (result.length > 0) {
                     // Authenticate the user
-                    req.session.loggedin = true;
+                    req.session.loggedIn = true;
                     req.session.user = user;
                     // Redirect to home page
-                    res.redirect('index');
+                    res.redirect('/')
                 } else {
-                    res.send('Incorrect Username and/or Password!');
+                    res.render('login',{
+                        alert:true,
+                        alertTitle: "Advertencia",
+                        alertMessage: "Datos Invalidos",
+                        alertIcon:'info',
+                        showConfirmButton: true,
+                        timer: false,
+                        ruta: 'login'
+                    })
                 }			
-                res.end();
             });
         } else {
-            res.send('Please enter Username and Password!');
-            res.end();
+            res.render('login',{
+                alert:true,
+                alertTitle: "Advertencia",
+                alertMessage: "Ingrese un usuario y password",
+                alertIcon:'info',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'login'
+            })
         }
     } catch (error) {
         
     }
-}
-
-exports.permiso = async (req, res)=>{
-    // If the user is loggedin
-	if (req.session.loggedin) {
-		// Output username
-		res.send('Welcome back, ' + req.session.username + '!');
-	} else {
-		// Not logged in
-		res.send('Please login to view this page!');
-	}
-	res.end();
 }

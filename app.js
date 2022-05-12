@@ -1,9 +1,11 @@
 const express  = require('express');
+const session = require('express-session')
 const dotenv =  require('dotenv');
-const cookieParser = require('cookie-parser');
+const morgan =  require('morgan');
+//const cookieParser = require('cookie-parser');
 
 const app = express();
-
+app.use(morgan('dev'));
 //seteamos el motor de plantillas
 app.set('view engine', 'ejs');
 
@@ -11,8 +13,12 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 //para poder trabajar con cookies
-app.use(cookieParser())
-
+//app.use(cookieParser())
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 //para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
