@@ -62,3 +62,20 @@ exports.login = async (req, res)=>{
         
     }
 }
+
+exports.protected = async (req, res)=>{
+    // If the user is loggedin
+	if (req.session.loggedIn) {
+		// Output username
+		res.render('index')
+	} else {
+		// Not logged in
+		res.redirect('/login')
+	}
+	res.end();
+}
+
+exports.logout = (req, res)=>{
+    req.session.destroy((err)=>{})
+    return res.redirect('/')
+}
