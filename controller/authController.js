@@ -34,7 +34,7 @@ exports.login = async (req, res)=>{
                     req.session.loggedIn = true;
                     req.session.user = user;
                     // Redirect to home page
-                    res.redirect('/')
+                    res.render('index', {'usuario':user, 'password':pass})
                 } else {
                     res.render('login',{
                         alert:true,

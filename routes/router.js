@@ -18,6 +18,6 @@ router.get('/register', (req, res)=>{
 //router para los metodos del controller
 router.post('/register', authController.register);
 router.post('/login', authController.login);
-router.get('/logout', authController.logout)
+router.get('/logout', authController.logout);
 
 module.exports = router

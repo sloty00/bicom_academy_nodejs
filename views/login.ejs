@@ -47,8 +47,8 @@
         <div class="checkbox mb-3">
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Login con Google</button>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Login con Facebook</button>
+        <button id="googleLogin" class="w-100 btn btn-lg btn-secondary" type="button">Login con Google</button>
+        <button id="facebookLogin" class="w-100 btn btn-lg btn-secondary" type="button">Login con Facebook</button>
       </form>
       <a href="/register" type="button" class="w-100 btn btn-lg btn-primary">Registrarse</a>
     </main>
@@ -67,31 +67,7 @@
       </script>
     <% } %>
 
-    <!-- FIREBASE SCRIPT-->
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyDbUpenNnMSwJ20m5BO7vfq5bO6-FRl0Uk",
-        authDomain: "bicom-academy.firebaseapp.com",
-        projectId: "bicom-academy",
-        storageBucket: "bicom-academy.appspot.com",
-        messagingSenderId: "947135584285",
-        appId: "1:947135584285:web:dc31e7cdf922b4c8a6cef4",
-        measurementId: "G-YRGQ2PZ88F"
-      };
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-    </script>
-    <!-- END FIREBASE SCRIPT-->
-
-    	<!-- External JavaScripts
+  <!-- External JavaScripts
 	============================================= -->
 	<script src="js/jquery.js"></script>
 	<script src="js/plugins.js"></script>
