@@ -45,7 +45,7 @@ exports.login = async (req, res)=>{
                         timer: false,
                         ruta: 'login'
                     })
-                }			
+                }		
             });
         } else {
             res.render('login',{
