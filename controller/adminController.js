@@ -15,7 +15,7 @@ exports.registerAdmin = async (req, res)=>{
                         alert:true,
                         alertTitle: "Informacion",
                         alertMessage: "Usuario Creado",
-                        alertIcon:'info',
+                        alertIcon:'success',
                         showConfirmButton: true,
                         timer: false,
                         ruta: 'login'
@@ -58,7 +58,7 @@ exports.loginAdmin = async (req, res)=>{
                         'usuario':user, 
                         'password':pass,
                         alert:true,
-                        alertTitle: "Informacion",
+                        alertTitle: "success",
                         alertMessage: "Acceso Correcto",
                         alertIcon:'info',
                         showConfirmButton: true,
@@ -69,7 +69,7 @@ exports.loginAdmin = async (req, res)=>{
                         alert:true,
                         alertTitle: "Advertencia",
                         alertMessage: "Datos Invalidos",
-                        alertIcon:'warning',
+                        alertIcon:'error',
                         showConfirmButton: true,
                         timer: false,
                         ruta: 'loginAdmin'
