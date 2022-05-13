@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Acceso a Bicom Academy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/bs-switches.css" type="text/css" />
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="css/colors.php?color=0C1CCC" type="text/css" />
+  
+    <!-- Articles Demo Specific Stylesheet -->
+    <link rel="stylesheet" href="demos/articles/articles.css" type="text/css" />
+    <link rel="stylesheet" href="demos/articles/css/fonts.css" type="text/css" />
+    
+  </head>
+  <body class="text-center">
+    <main class="form-signin text-center shadow-lg p3 mb-5"><br>
+      <img class="mb-4" src="img/logo_bicom.png" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Acceso Administrativo</h1>
+    </br>
+      <form id="form_login" action="/loginAdmin" method="POST">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="user", name="user" placeholder="Nombre Usuario">
+          <label for="user">Cuenta Usuario</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="pass", name="pass" placeholder="Password">
+          <label for="pass">Contraseña</label>
+        </div>
+
+        <div class="checkbox mb-3">
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <button id="googleLogin" class="w-100 btn btn-lg btn-secondary" type="button">Login con Google</button>
+        <button id="facebookLogin" class="w-100 btn btn-lg btn-secondary" type="button">Login con Facebook</button>
+      </form>
+      <a href="/registerAdmin" type="button" class="w-100 btn btn-lg btn-primary">Registrarse</a>
+    </main>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(alert) { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text:'<%= alertMessage %>',
+          icon:'<%= alertIcon %>',
+          showConfirmButton: <%= showConfirmButton %>,
+          timer: <%= timer %>
+        }).then(()=>{
+          window.location = '/<%= ruta %>'
+        })
+      </script>
+    <% } %>
+  <!-- External JavaScripts
+	============================================= -->
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
+  </body>
+</html>
