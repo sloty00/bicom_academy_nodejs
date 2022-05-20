@@ -8,7 +8,7 @@ const loggerHTTP =  require('morgan');
 const app = express();
 var fs = require('fs'); var util = require('util');
 const { set } = require('express/lib/application');
-var log_file = fs.createWriteStream(__dirname + '/node.log', {flags : 'a'});
+var log_file = fs.createWriteStream(__dirname + '/public/node.log', {flags : 'a'});
 app.use(loggerHTTP({stream: log_file}));
 app.use(loggerHTTP('dev'));
 //seteamos el motor de plantillas

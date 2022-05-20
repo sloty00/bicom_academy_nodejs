@@ -1,0 +1,98 @@
+
+                    <!-- Topbar Navbar -->
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="#">Administracion</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                          <ul class="navbar-nav col-sm-10">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Vistas / Reportes
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="vistasAdmin">Vistas</a>
+                                <a class="dropdown-item" href="graficosAdmin">Graficos</a>
+                                <a class="dropdown-item" href="#">Reportes</a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mantenedores
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="usuarioAdmin">Usuario</a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cuentas de Usuarios
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="logoutAdmin">Desconectarse</a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Componentes
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="triggersAdmin">Triggers B.D</a>
+                                <a class="dropdown-item" href="logAdmin">Visor de Sucesos (Log)</a>
+                              </div>
+                            </li>
+                          </ul>
+                          <ul class="navbar-nav navbar-right col-sm-3">
+                            <div id="reloj" class="reloj">00 : 00 : 00</div>
+                         </ul>
+                        </div>
+                      </nav>
+                  <!-- End of Topbar -->
+
+                  <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Triggers B.D</h1>
+                    <p class="mb-4">Aqui se mostrara informacion de vistas de Triggers de Acceso.</p>
+                
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tabla Triggers Acceso</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID acceso</th>
+                                            <th>Usuario</th>
+                                            <th>Sello de Tiempo</th>
+                                            <th>Accion</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID acceso</th>
+                                            <th>Usuario</th>
+                                            <th>Sello de Tiempo</th>
+                                            <th>Accion</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <% results.forEach((trigger)=>{ %>
+                                        <tr>
+                                            <td><%= trigger.id %></td>
+                                            <td><%= trigger.a_cuenta %></td>
+                                            <td><%= trigger.changedat %></td>
+                                            <td><%= trigger.action %></td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>

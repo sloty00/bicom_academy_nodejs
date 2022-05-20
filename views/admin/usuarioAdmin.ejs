@@ -1,0 +1,270 @@
+
+                    <!-- Topbar Navbar -->
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="#">Administracion</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                          <ul class="navbar-nav col-sm-10">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Vistas / Reportes
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="vistasAdmin">Vistas</a>
+                                <a class="dropdown-item" href="graficosAdmin">Graficos</a>
+                                <a class="dropdown-item" href="#">Reportes</a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mantenedores
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="usuarioAdmin">Usuario</a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cuentas de Usuarios
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="logoutAdmin">Desconectarse</a>
+                              </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Componentes
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="triggersAdmin">Triggers B.D</a>
+                                <a class="dropdown-item" href="logAdmin">Visor de Sucesos (Log)</a>
+                              </div>
+                            </li>
+                          </ul>
+                          <ul class="navbar-nav navbar-right col-sm-3">
+                            <div id="reloj" class="reloj">00 : 00 : 00</div>
+                         </ul>
+                        </div>
+                      </nav>
+                  <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                  <!-- Page Heading -->
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                      <h1 class="h3 mb-0 text-gray-800">Mantenedores</h1>
+                  </div>
+
+                  <div class="row">
+
+                      <div class="col-lg-4 align-items-start">
+
+                          <!-- Basic Card Example -->
+                          <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Tabla Tipo</h6>
+                            </div>
+                            <div class="card-body">
+                              <form>
+                                <div class="form-group">
+                                  <label for="inputAddress">Descripcion</label>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="Tipo de Usuario">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                              </form>
+                            </div>
+                        </div>
+
+                          <!-- Basic Card Example -->
+                          <div class="card shadow mb-4">
+                              <div class="card-header py-3">
+                                  <h6 class="m-0 font-weight-bold text-primary">Tabla Persona</h6>
+                              </div>
+                              <div class="card-body">
+                                <div class="card-body">
+                                  <form>
+                                    <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="inputState">Tipo Usuario</label>
+                                        <select id="inputState" class="form-control">
+                                          <option selected>Elegir...</option>
+                                          <option>...</option>
+                                        </select>
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="inputAddress">Rut</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="Rut de la persona">
+                                      </div>
+                                    </div>
+                                    <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="inputEmail">Nombre</label>
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="Nombre">
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="inputPassword">Apellido</label>
+                                        <input type="text" class="form-control" id="inputPassword" placeholder="Apellido">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputAddress2">Direccion</label>
+                                      <input type="text" class="form-control" id="inputAddress2" placeholder="Direccion">
+                                    </div>
+                                    <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="inputState">Comuna</label>
+                                        <select id="inputState" class="form-control">
+                                          <option selected>Elegir...</option>
+                                          <option>...</option>
+                                        </select>
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="inputPassword">Telefono</label>
+                                        <input type="text" class="form-control" id="inputPassword" placeholder="Telefono">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="inputAddress2">Correo</label>
+                                      <input type="text" class="form-control" id="inputAddress2" placeholder="Correo">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                  </form>
+                                </div>
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <div class="col-lg-4 align-items-centers">
+
+                      <!-- Basic Card Example -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tabla Comuna</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="card-body">
+                            <form>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputState">Comuna</label>
+                                  <select id="inputState" class="form-control">
+                                    <option selected>Elegir...</option>
+                                    <option>...</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputAddress">C.U.T Comuna</label>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="CUT Comuna">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Descripcion</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Descripcion">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Guardar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Basic Card Example -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tabla Provincia</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="card-body">
+                            <form>
+                              <div class="form-row">
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputState">Region</label>
+                                    <select id="inputState" class="form-control">
+                                      <option selected>Elegir...</option>
+                                      <option>...</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputAddress">C.U.T Provincia</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="CUT Provincia">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Descripcion</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Desccripcion">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Guardar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                      </div>
+
+                      <div class="col-lg-4 align-items-end">
+
+                      <!-- Basic Card Example -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tabla Region</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="card-body">
+                            <form>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputState">Pais</label>
+                                  <select id="inputState" class="form-control">
+                                    <option selected>Elegir...</option>
+                                    <option>...</option>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputAddress">C.U.T Region</label>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="CUT Region">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Descripcion</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Descripcion">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Guardar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Basic Card Example -->
+                      <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tabla Pais</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="card-body">
+                            <form>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputEmail">C.U.T Pais</label>
+                                  <input type="email" class="form-control" id="inputEmail" placeholder="CUT Pais">
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputPassword">Descripcion</label>
+                                  <input type="text" class="form-control" id="inputPassword" placeholder="Pais">
+                                </div>
+                              </div>
+                              <button type="submit" class="btn btn-primary">Guardar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+              </div>
+              <!-- /.container-fluid -->

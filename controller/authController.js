@@ -4,32 +4,20 @@ exports.register = async (req, res)=>{
     try {
         const user = req.body.user
         const pass = req.body.pass
-        const type = 1
+        const type = 2
         if (user && pass) {
             conexion.query('INSERT INTO tbl_acceso SET ?', {a_cuenta:user, a_password:pass, fk_tipo:type}, (error, result)=>{
                 if(error){
                     console.log(error);
                 }else{
-                    res.render('registroPrincipal',{
-                        alert:true,
-                        alertTitle: "Informacion",
-                        alertMessage: "Usuario Creado",
-                        alertIcon:'info',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: 'accesoPrincipal'
+                    res.render('registroPrincipal', {
+                        message: 'Datos Guardados Satisfactoriamente'
                     })
                 }
             });
         }else{
-            res.render('registroPrincipal',{
-                alert:true,
-                alertTitle: "Advertencia",
-                alertMessage: "Ingrese un usuario y password",
-                alertIcon:'warning',
-                showConfirmButton: true,
-                timer: false,
-                ruta: 'registroPrincipal'
+            res.render('registroPrincipal', {
+                message: 'Datos Invalidos'
             })
         }
     } catch (error) {
@@ -53,42 +41,20 @@ exports.login = async (req, res)=>{
                     req.session.loggedIn = true;
                     req.session.user = user;
                     // Redirect to home page
-                    res.render('panelPrincipal', {
-                        'usuario':user, 
-                        'password':pass,
-                        alert:true,
-                        alertTitle: "Informacion",
-                        alertMessage: "Acceso Correcto",
-                        alertIcon:'info',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: '/'
-                    })
+                    res.render('panelPrincipal')
                 } else {
-                    res.render('accesoPrincipal',{
-                        alert:true,
-                        alertTitle: "Advertencia",
-                        alertMessage: "Datos Invalidos",
-                        alertIcon:'warning',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: 'accesoPrincipal'
+                    res.render('accesoPrincipal', {
+                        message: 'Datos Incorrectos'
                     })
                 }		
             });
         } else {
-            res.render('accesoPrincipal',{
-                alert:true,
-                alertTitle: "Advertencia",
-                alertMessage: "Ingrese un usuario y password",
-                alertIcon:'warning',
-                showConfirmButton: true,
-                timer: false,
-                ruta: 'accesoPrincipal'
+            res.render('accesoPrincipal', {
+                message: 'Rellene sus datos'
             })
         }
     } catch (error) {
-        
+        console.log(error);
     }
 }
 

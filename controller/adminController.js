@@ -7,30 +7,18 @@ exports.registroAdmin = async (req, res)=>{
         const type = 1
 
         if (user && pass) {
-            conexion.query('INSERT INTO tbl_admin SET ?', {ad_cuenta:user, ad_password:pass, fk_tipo:type}, (error, result)=>{
+            conexion.query('INSERT INTO tbl_acceso SET ?', {a_cuenta:user, a_password:pass, fk_tipo:type}, (error, result)=>{
                 if(error){
                     console.log(error);
                 }else{
-                    res.render('registroAdmin',{
-                        alert:true,
-                        alertTitle: "Informacion",
-                        alertMessage: "Usuario Creado",
-                        alertIcon:'success',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: 'registroAdmin'
+                    res.render('admin/registroAdmin',{
+                        message: 'Datos Guardados Satisfactoriamente'
                     })
                 }
             });
         }else{
-            res.render('registroAdmin',{
-                alert:true,
-                alertTitle: "Advertencia",
-                alertMessage: "Ingrese un usuario y password",
-                alertIcon:'warning',
-                showConfirmButton: true,
-                timer: false,
-                ruta: 'registroAdmin'
+            res.render('admin/registroAdmin',{
+                message: 'Rellene sus datos'
             })
         }
     } catch (error) {
@@ -54,43 +42,21 @@ exports.accesoAdmin = async (req, res)=>{
                     req.session.loggedIn = true;
                     req.session.user = user;
                     // Redirect to home page
-                    res.render('admin/panelAdmin', {
-                        'usuario':user, 
-                        'password':pass,
-                        alert:true,
-                        alertTitle: "success",
-                        alertMessage: "Acceso Correcto",
-                        alertIcon:'info',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: '/'
-                    })
+                    res.render('admin/panelAdmin')
                     console.log(user);
                 } else {
                     res.render('admin/accesoAdmin',{
-                        alert:true,
-                        alertTitle: "Advertencia",
-                        alertMessage: "Datos Invalidos",
-                        alertIcon:'error',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: 'accesoAdmin'
+                        message: 'Datos Incorrectos'
                     })
                 }		
             });
         } else {
             res.render('admin/accesoAdmin',{
-                alert:true,
-                alertTitle: "Advertencia",
-                alertMessage: "Ingrese un usuario y password",
-                alertIcon:'warning',
-                showConfirmButton: true,
-                timer: false,
-                ruta: 'accesoAdmin'
+                message: 'Rellene sus Datos'
             })
         }
     } catch (error) {
-        
+        console.log(error);
     }
 }
 
@@ -110,12 +76,59 @@ exports.logoutAdmin = (req, res)=>{
     req.session.destroy((err)=>{})
     return res.redirect('accesoAdmin')
 }
-/*
-exports.fechahora = (req, res)=>{
-    const moment = require('moment')
-    currentDate = moment().format('DD-MM-YYYY')
-    currentTime = moment().format('hh:mm')
-    console. log(currentTime, currentDate);
-    res.render('admin/accesoAdmin', {alert:false, hora:currentTime, fecha:currentDate})
+
+exports.vistasAdmin = (req, res)=>{
+    conexion.query('select * from vista_personas_admin', (error, results)=>{
+        if(error){
+            throw error;
+        } else {
+            res.render('admin/vistasAdmin', {results:results});
+        }
+    });
 }
-*/
+
+exports.preupdateAdmin = (req, res)=>{
+    const a_id = req.params.a_id;
+    conexion.query('select * from tbl_acceso where a_id=? and fk_tipo=1', [a_id], (error, results)=>{
+        if(error){
+            throw error;
+        } else {
+            res.render('admin/editAdmin', {user:results[0]});
+        }
+    })
+}
+
+exports.editAdmin = (req, res)=>{
+    const a_id = req.body.id;
+    const user = req.body.user;
+    const pass = req.body.pass;
+    const tipo = 1;
+    conexion.query("UPDATE tbl_acceso SET ? WHERE a_id=?", [{a_cuenta:user, a_password:pass, fk_tipo:tipo}, a_id], (error, result)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/vistasAdmin');
+        }
+    })
+}
+
+exports.deleteAdmin = (req, res)=>{
+    const a_id = req.params.a_id;
+    conexion.query("DELETE FROM tbl_acceso WHERE a_id=?", [a_id], (error, result)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/vistasAdmin');
+        }
+    })
+}
+
+exports.triggersAdmin = (req, res)=>{
+    conexion.query('select * from auditoria_acceso', (error, results)=>{
+        if(error){
+            throw error;
+        } else {
+            res.render('admin/triggersAdmin', {results:results});
+        }
+    });
+}

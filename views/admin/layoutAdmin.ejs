@@ -55,10 +55,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Bicom</span>
-                        <div id="reloj" class="reloj">00 : 00 : 00
-                        </div>
-                    
+                        <span>Copyright &copy; Bicom</span>                
                     </div>
                 </div>
             </footer>
@@ -95,20 +92,6 @@
     <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <% if(alert) { %>
-      <script>
-        Swal.fire({
-          title: '<%= alertTitle%>',
-          text:'<%= alertMessage %>',
-          icon:'<%= alertIcon %>',
-          showConfirmButton: <%= showConfirmButton %>,
-          timer: <%= timer %>
-        }).then(()=>{
-          window.location = '/<%= ruta %>'
-        })
-      </script>
-    <% } %>
 
 </body>
 

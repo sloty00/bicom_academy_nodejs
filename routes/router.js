@@ -2,7 +2,9 @@ const express  = require('express')
 const router = express.Router()
 const authController = require('../controller/authController');
 const adminController = require('../controller/adminController');
-const { panelPrincipal, accesoPrincipal, registroPrincipal, panelAdmin, registroAdmin, accesoAdmin } = require('../controller/pageController');
+const { panelPrincipal, accesoPrincipal, registroPrincipal, panelAdmin, registroAdmin, accesoAdmin, vistasAdmin, graficosAdmin, usuarioAdmin, triggersAdmin, editAdmin, deleteAdmin, logAdmin} = require('../controller/pageController');
+
+//------------------------------Panel Principal----------------------------------//
 
 router.get('/', authController.protected, panelPrincipal)
 router.get('/accesoPrincipal', accesoPrincipal)
@@ -12,60 +14,22 @@ router.post('/registroPrincipal', authController.register);
 router.post('/accesoPrincipal', authController.login)
 
 
-
+//-----------------------------Panel Administrativo------------------------------//
 
 router.get('/panelAdmin', adminController.protectedAdmin, panelAdmin)
-router.get('/registroAdmin', adminController.protectedAdmin, registroAdmin)
+router.get('/registroAdmin', adminController.accesoAdmin, registroAdmin)
 router.get('/accesoAdmin', accesoAdmin)
+router.get('/vistasAdmin', adminController.vistasAdmin, vistasAdmin);
+router.get('/graficosAdmin', graficosAdmin);
+router.get('/usuarioAdmin', usuarioAdmin);
+router.get('/logAdmin', logAdmin)
+router.get('/triggersAdmin', adminController.triggersAdmin, triggersAdmin);
+router.get('/editAdmin/:a_id', adminController.preupdateAdmin, editAdmin);
+router.get('/deleteAdmin/:a_id', adminController.deleteAdmin, deleteAdmin);
 
 router.post('/registroAdmin', adminController.registroAdmin);
+router.post('/editAdmin', adminController.editAdmin);
 router.post('/accesoAdmin', adminController.accesoAdmin);
 router.get('/logoutAdmin', adminController.logoutAdmin);
-
-router.post('/registroPrincipal', authController.register);
-
-
-
-
-
-
-//router para las vistas
-/*
-router.get('/', authController.protected, (req, res)=>{    
-    res.render('index', {user:req.user})
-})
-*/
-
-/*router.get('/login', (req, res)=>{
-    res.render('login', {alert:false})
-})*/
-
-/*router.get('/register', (req, res)=>{
-    res.render('register',{alert:false});
-})*/
-
-/*router.get('/registerAdmin', (req, res)=>{
-    res.render('registerAdmin',{alert:false})
-})*/
-
-/*router.get('/loginAdmin', (req, res)=>{
-    res.render('loginAdmin', {alert:false})
-})¨*/
-
-/*router.get('/panelAdmin', authController.protected, (req, res)=>{    
-    res.render('panelAdmin')
-})*/
-
-
-//router para los metodos del controller
-/*
-router.post('/register', authController.register);
-router.post('/login', authController.login);
-router.get('/logout', authController.logout);
-router.post('/registerAdmin', adminController.registerAdmin);
-router.post('/loginAdmin', adminController.loginAdmin);
-router.get('/logoutAdmin', adminController.logoutAdmin);
-*/
-
 
 module.exports = router

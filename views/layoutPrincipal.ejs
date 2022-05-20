@@ -13,13 +13,27 @@
 
     <!-- Custom fonts for this template-->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .internalbox {
+            width: 100%;
+            height: 100%;
+        }
+
+        .containerbox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -43,7 +57,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-tasks"></i>
                     <span>Bicom Academy</span></a>
             </li>
 
@@ -92,11 +106,14 @@
                 </a>
                 <div id="cuentasusuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="accesoAdmin">Perfil de Usuario</a>
-                        <a class="collapse-item" href="logoutAdmin">Desconectarse</a>
+                        <a class="collapse-item" href="accesoPrincipal">Perfil de Usuario</a>
+                        <a class="collapse-item" href="logout">Desconectarse</a>
                     </div>
                 </div>
             </li>
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -156,45 +173,61 @@
     <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"></script>
+    <script >
         function actual() {
-         fecha=new Date(); //Actualizar fecha.
-         hora=fecha.getHours(); //hora actual
-         minuto=fecha.getMinutes(); //minuto actual
-         segundo=fecha.getSeconds(); //segundo actual
-         if (hora<10) { //dos cifras para la hora
-             hora="0"+hora;
-             }
-         if (minuto<10) { //dos cifras para el minuto
-             minuto="0"+minuto;
-             }
-         if (segundo<10) { //dos cifras para el segundo
-             segundo="0"+segundo;
-             }
-         //devolver los datos:
-         mireloj = hora+" : "+minuto+" : "+segundo;	
-         return mireloj; 
+            fecha=new Date(); //Actualizar fecha.
+            hora=fecha.getHours(); //hora actual
+            minuto=fecha.getMinutes(); //minuto actual
+            segundo=fecha.getSeconds(); //segundo actual
+            if (hora<10) { //dos cifras para la hora
+                hora="0"+hora;
+                }
+            if (minuto<10) { //dos cifras para el minuto
+                minuto="0"+minuto;
+                }
+            if (segundo<10) { //dos cifras para el segundo
+                segundo="0"+segundo;
+                }
+            //devolver los datos:
+            mireloj = hora+" : "+minuto+" : "+segundo+" Hora local";	
+            return mireloj; 
         }
         function actualizar() { //función del temporizador
             mihora=actual(); //recoger hora actual
-            mireloj=document.getElementById("reloj"); //buscar elemento reloj
+            mireloj=document.getElementById("relojchile"); //buscar elemento reloj
             mireloj.innerHTML=mihora; //incluir hora en elemento
         }
         setInterval(actualizar,1000); //iniciar temporizador
     </script>
-    <% if(alert) { %>
-      <script>
-        Swal.fire({
-          title: '<%= alertTitle%>',
-          text:'<%= alertMessage %>',
-          icon:'<%= alertIcon %>',
-          showConfirmButton: <%= showConfirmButton %>,
-          timer: <%= timer %>
-        }).then(()=>{
-          window.location = '/<%= ruta %>'
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(10000, 0).slideDown(20000,
+            function(){
+                $(this).remove();
+            }, 10000);
         })
-      </script>
-    <% } %>
-
+    </script>
+    <script>
+        function actualUTC() {
+        var myDate = new Date();
+        hour = myDate.getUTCHours();
+        minutes = myDate.getUTCMinutes();
+        seconds = myDate.getUTCSeconds();
+        miclock = hour+" : "+minutes+" : "+seconds+" Hora UTC";
+        //myDate1=document.getElementById("reloj-id"); //buscar elemento reloj
+        //myDate1.innerHTML=mireloj; //incluir hora en elemento
+        return miclock;
+        }
+        function actualizarUTC() { //función del temporizador
+            myhour=actualUTC(); //recoger hora actual
+            miclock=document.getElementById("relojUTC"); //buscar elemento reloj
+            miclock.innerHTML=myhour; //incluir hora en elemento
+        }
+        setInterval(actualizarUTC,1000); //iniciar temporizador
+    </script>
+    <script>
+    </script>
 </body>
 </html>
