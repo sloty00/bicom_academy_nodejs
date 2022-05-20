@@ -1,3 +1,4 @@
+const { query } = require('express')
 const conexion = require('../database/db')
 
 exports.registroAdmin = async (req, res)=>{
@@ -77,13 +78,14 @@ exports.logoutAdmin = (req, res)=>{
     return res.redirect('accesoAdmin')
 }
 
-exports.vistasAdmin = (req, res)=>{
-    conexion.query('select * from vista_personas_admin', (error, results)=>{
-        if(error){
-            throw error;
-        } else {
-            res.render('admin/vistasAdmin', {results:results});
-        }
+exports.tablaPersona = (req, res)=>{
+    conexion.query("SELECT * from tbl_tipo;" + 
+                    "SELECT * from tbl_acceso;"+
+                    "SELECT * FROM tbl_persona;"+
+                    "SELECT * FROM tbl_comuna;"+
+                    "SELECT * FROM tbl_provincia", [1, 2, 3, 4, 5], function(err, results) {
+        if (err) throw err;
+        res.render('admin/vistasAdmin', {results:results[0], result:results[1], persona:results[2], comuna:results[3], provincia:results[4]});
     });
 }
 

@@ -12,9 +12,9 @@
                                 Vistas / Reportes
                               </a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="vistasAdmin">Vistas</a>
-                                <a class="dropdown-item" href="graficosAdmin">Graficos</a>
-                                <a class="dropdown-item" href="#">Reportes</a>
+                                <a class="dropdown-item" href="vistasAdmin">General</a>
+                                <a class="dropdown-item" href="graficosAdmin">Adminstracion</a>
+                                <a class="dropdown-item" href="#">Usuarios</a>
                               </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -44,7 +44,8 @@
                             </li>
                           </ul>
                           <ul class="navbar-nav navbar-right col-sm-3">
-                            <div id="reloj" class="reloj">00 : 00 : 00</div>
+                            <div id="relojchile"></div><br>
+                            <div id="relojUTC"></div>
                          </ul>
                         </div>
                       </nav>
@@ -53,97 +54,235 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Vistas</h1>
-    <p class="mb-4">Aqui se mostrara informacion de vistas de tablas de indole Administrativo.</p>
+    <h1 class="h3 mb-2 text-gray-800">Vista General</h1>
+    <p class="mb-4">Aqui se mostrara informacion de vistas de las tablas.</p>
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tabla Personas Administrativas</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>ID acceso</th>
-                            <th>Usuario</th>
-                            <th>Password</th>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tabla Tipo</h6>
+              </div>
+              <div class="table-responsive">
+                  <table class="table table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
                             <th>ID Tipo</th>
-                            <th>Tipo Descripcion</th>
-                            <th>Rut Persona</th>
-                            <th>Nombre Persona</th>
-                            <th>Apellido Persona</th>
-                            <th>Direccion Persona</th>
-                            <th>Telefono Persona</th>
-                            <th>Email Persona</th>
-                            <th>CUT Comuna</th>
-                            <th>Nombre Comuna</th>
-                            <th>CUT Provincia</th>
-                            <th>Nombre Provincia</th>
-                            <th>CUT Region</th>
-                            <th>Nombre Region</th>
-                            <th>CUT Pais</th>
-                            <th>Nombre Pais</th> 
-                            <th>Accion</th> 
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>ID acceso</th>
-                            <th>Usuario</th>
-                            <th>Password</th>
-                            <th>ID Tipo</th>
-                            <th>Tipo Descripcion</th>
-                            <th>Rut Persona</th>
-                            <th>Nombre Persona</th>
-                            <th>Apellido Persona</th>
-                            <th>Direccion Persona</th>
-                            <th>Telefono Persona</th>
-                            <th>Email Persona</th>
-                            <th>CUT Comuna</th>
-                            <th>Nombre Comuna</th>
-                            <th>CUT Provincia</th>
-                            <th>Nombre Provincia</th>
-                            <th>CUT Region</th>
-                            <th>Nombre Region</th>
-                            <th>CUT Pais</th>
-                            <th>Nombre Pais</th> 
-                            <th style="width:50px">Accion</th> 
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <% results.forEach((admin)=>{ %>
-                        <tr>
-                            <td><%= admin.a_id %></td>
-                            <td><%= admin.a_cuenta %></td>
-                            <td><%= admin.a_password %></td>
-                            <td><%= admin.tp_id %></td>
-                            <td><%= admin.tp_descripcion %></td>
-                            <td><%= admin.p_rut %></td>
-                            <td><%= admin.p_nombre %></td>
-                            <td><%= admin.p_apellidos %></td>
-                            <td><%= admin.p_direccion %></td>
-                            <td><%= admin.p_telefono %></td>
-                            <td><%= admin.p_email %></td>
-                            <td><%= admin.c_cut %></td>
-                            <td><%= admin.c_descripcion %></td>
-                            <td><%= admin.p_cut %></td>
-                            <td><%= admin.descripcion %></td>
-                            <td><%= admin.r_cut %></td>
-                            <td><%= admin.r_descripcion %></td>
-                            <td><%= admin.pa_cut %></td>
-                            <td><%= admin.p_descripcion %></td>
-                            <td style="width:50px">
+                            <th>Tipo Usuario</th>
+                            <th>Accion</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                          <tr>
+                              <th>ID Tipo</th>
+                              <th>Tipo Usuario</th>
+                              <th>Accion</th>
+                          </tr>
+                      </tfoot>
+                      <tbody>
+                          <% results.forEach((admin)=>{ %>
+                          <tr>
+                              <td><%= admin.tp_id %></td>
+                              <td><%= admin.tp_descripcion %></td>
+                              <td style="width:50px">
                                 <a href="/editAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-pen"></i></a>
                                 <a href="/deleteAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
+                              </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                  </table>
+              </div>
             </div>
         </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tabla Acceso</h6>
+              </div>
+              <div class="table-responsive">
+                  <table class="table table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                            <th>ID Usuario</th>
+                            <th>Nombre Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Tipo Usuario</th>
+                            <th>Accion</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                          <tr>
+                            <th>ID Usuario</th>
+                            <th>Nombre Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Tipo Usuario</th>
+                            <th>Accion</th>
+                          </tr>
+                      </tfoot>
+                      <tbody>
+                          <% result.forEach((admin)=>{ %>
+                          <tr>
+                              <td><%= admin.a_id %></td>
+                              <td><%= admin.a_cuenta %></td>
+                              <td><%= admin.a_password %></td>
+                              <td><%= admin.fk_tipo %></td>
+                              <td style="width:50px">
+                                <a href="/editAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-pen"></i></a>
+                                <a href="/deleteAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-trash"></i></a>
+                              </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tabla Acceso</h6>
+              </div>
+              <div class="table-responsive">
+                  <table class="table table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                            <th>Rut</th>
+                            <th>ID Acceso</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Comuna</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Accion</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                          <tr>
+                            <th>Rut</th>
+                            <th>ID Acceso</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Comuna</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Accion</th>
+                          </tr>
+                      </tfoot>
+                      <tbody>
+                          <% persona.forEach((admin)=>{ %>
+                          <tr>
+                              <td><%= admin.p_rut %></td>
+                              <td><%= admin.fk_id %></td>
+                              <td><%= admin.p_nombre %></td>
+                              <td><%= admin.p_apellido %></td>
+                              <td><%= admin.p_comuna %></td>
+                              <td><%= admin.p_direccion %></td>
+                              <td><%= admin.p_telefono %></td>
+                              <td><%= admin.p_email %></td>
+                              <td style="width:50px">
+                                <a href="/editAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-pen"></i></a>
+                                <a href="/deleteAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-trash"></i></a>
+                              </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tabla Comuna</h6>
+              </div>
+              <div class="table-responsive">
+                  <table class="table table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                            <th>C.U.T Comuna</th>
+                            <th>Comuna</th>
+                            <th>C.U.T Provincia</th>
+                            <th>Accion</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                          <tr>
+                            <th>C.U.T Comuna</th>
+                            <th>Comuna</th>
+                            <th>C.U.T Provincia</th>
+                            <th>Accion</th>
+                          </tr>
+                      </tfoot>
+                      <tbody>
+                          <% comuna.forEach((admin)=>{ %>
+                          <tr>
+                              <td><%= admin.c_cut %></td>
+                              <td><%= admin.c_descripcion %></td>
+                              <td><%= admin.fk_provincia %></td>
+                              <td style="width:50px">
+                                <a href="/editAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-pen"></i></a>
+                                <a href="/deleteAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-trash"></i></a>
+                              </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tabla Provincia</h6>
+              </div>
+              <div class="table-responsive">
+                  <table class="table table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                            <th>C.U.T Comuna</th>
+                            <th>Comuna</th>
+                            <th>C.U.T Provincia</th>
+                            <th>Accion</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                          <tr>
+                            <th>C.U.T Provincia</th>
+                            <th>Provincia</th>
+                            <th>C.U.T Region</th>
+                            <th>Accion</th>
+                          </tr>
+                      </tfoot>
+                      <tbody>
+                          <% provincia.forEach((admin)=>{ %>
+                          <tr>
+                              <td><%= admin.p_cut %></td>
+                              <td><%= admin.descripcion %></td>
+                              <td><%= admin.fk_region %></td>
+                              <td style="width:50px">
+                                <a href="/editAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-pen"></i></a>
+                                <a href="/deleteAdmin/<%= admin.a_id %>" class="btn btn-outline-info"><i class="fa-xs fas fa-trash"></i></a>
+                              </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
-
 </div>

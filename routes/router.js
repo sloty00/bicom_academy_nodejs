@@ -19,7 +19,7 @@ router.post('/accesoPrincipal', authController.login)
 router.get('/panelAdmin', adminController.protectedAdmin, panelAdmin)
 router.get('/registroAdmin', adminController.accesoAdmin, registroAdmin)
 router.get('/accesoAdmin', accesoAdmin)
-router.get('/vistasAdmin', adminController.vistasAdmin, vistasAdmin);
+router.get('/vistasAdmin', adminController.tablaPersona, vistasAdmin);
 router.get('/graficosAdmin', graficosAdmin);
 router.get('/usuarioAdmin', usuarioAdmin);
 router.get('/logAdmin', logAdmin)
