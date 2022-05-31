@@ -1,40 +1,218 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div>
-                <div></div>
-                <div>
-                    <div class="p-5">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Ingreso a Academy</h1>
-                        </div>
-                        <form class="user" action="/accesoPrincipal" method="POST">
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="user" name="user" placeholder="Nombre de Usuario">
-                            </div>
-                            <div class="form-group">
-                                    <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="Password">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-arrow-right"></i>  Ingreso</button>
+<head>
 
-                                <a href="#" class="btn btn-google btn-block"><i class="fab fa-google fa-fw"></i>
-                                    Ingreso con Google</a>
-                                <a href="#" class="btn btn-facebook btn-block"><i
-                                        class="fab fa-facebook-f fa-fw"></i>Ingreso con Facebook</a>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-                        </form>
-                        <%if(message){%>
-                        <div class="alert alert-warning" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
-                            <strong>Alerta: </strong><%=message%>
-                        </div>
-                        <%}%>
+    <title>Bicom Academy</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .internalbox {
+            width: 100%;
+            height: 100%;
+        }
+
+        .containerbox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex center_content align-items-center" href="login1">
+                <div class="logo-normal">
+                    <img src="img/logo_bicom.png" height="90" class="d-inline-block align-top" alt="">
+                </div>
+            </a>
+        </br>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Bicom Academy</span></a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#vistas"
+                    aria-expanded="true" aria-controls="vistas">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Vistas y Reportes</span>
+                </a>
+                <div id="vistas" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="utilities-color.html">Vistas</a>
+                        <a class="collapse-item" href="utilities-border.html">Graficos</a>
+                        <a class="collapse-item" href="utilities-animation.html">Reportes</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </li>
 
-</div>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#mantenedores"
+                    aria-expanded="true" aria-controls="mantenedores">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Mantenedores</span>
+                </a>
+                <div id="mantenedores" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="utilities-color.html">Vistas</a>
+                        <a class="collapse-item" href="utilities-border.html">Graficos</a>
+                        <a class="collapse-item" href="utilities-animation.html">Reportes</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuentasusuario"
+                    aria-expanded="true" aria-controls="cuentasusuario">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Cuentas de usuario</span>
+                </a>
+                <div id="cuentasusuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="accesoPrincipal">Perfil de Usuario</a>
+                        <a class="collapse-item" href="logout">Desconectarse</a>
+                    </div>
+                </div>
+            </li>
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+            <div class="container">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div>
+                            <div></div>
+                            <div>
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Ingreso a Academy</h1>
+                                    </div>
+                                    <form class="user" action="/accesoPrincipal" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user" id="user" name="user" placeholder="Nombre de Usuario">
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-arrow-right"></i>  Ingreso</button>
+
+                                            <a href="#" class="btn btn-google btn-block"><i class="fab fa-google fa-fw"></i>
+                                                Ingreso con Google</a>
+                                            <a href="#" class="btn btn-facebook btn-block"><i
+                                                    class="fab fa-facebook-f fa-fw"></i>Ingreso con Facebook</a>
+
+                                    </form>
+                                    <%if(message){%>
+                                    <div class="alert alert-warning" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                                        <strong>Alerta: </strong><%=message%>
+                                    </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+                            <!-- /.container-fluid -->
+
+                        </div>
+                        <!-- End of Main Content -->
+            
+                        <!-- Footer -->
+                        <footer class="sticky-footer bg-white">
+                            <div class="container my-auto">
+                                <div class="copyright text-center my-auto">
+                                    <span>Copyright &copy; Bicom 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- End of Footer -->
+            
+                    </div>
+                    <!-- End of Content Wrapper -->
+            
+                </div>
+                <!-- End of Page Wrapper -->
+            
+                <!-- Scroll to Top Button-->
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fas fa-angle-up"></i>
+                </a>
+            
+                <!-- Bootstrap core JavaScript-->
+                <script src="assets/vendor/jquery/jquery.min.js"></script>
+                <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            
+                <!-- Core plugin JavaScript-->
+                <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+            
+                <!-- Custom scripts for all pages-->
+                <script src="assets/js/sb-admin-2.min.js"></script>
+            
+                <!-- Page level plugins -->
+                <script src="assets/vendor/chart.js/Chart.min.js"></script>
+            
+                <!-- Page level custom scripts -->
+                <script src="assets/js/demo/chart-area-demo.js"></script>
+                <script src="assets/js/demo/chart-pie-demo.js"></script>
+                <script src="assets/js/demo/datatables-demo.js"></script>
+                <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
+                <script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"></script>
+            </body>
+            </html>

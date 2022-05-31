@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bicom Academy</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/assets/css/navbar-top-fixed.css" rel="stylesheet">
+    <style type="text/css">
+        .internalbox {
+            width: 100%;
+            height: 100%;
+        }
+
+        .containerbox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
+    <style type="text/css">
+        div.dataTables_wrapper {
+            margin-bottom: 3em;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+          <!-- Main Content -->
+          <div id="content">
+              <nav class="navbar navbar-expand-md fixed-top navbar-light bg-white">
+                  <div class="container-fluid">
+                  <!-- Begin Page Content -->
+                    <!-- Topbar Navbar -->
+                      <a class="navbar-brand" href="#">Administracion</a>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav col-sm-9">
+                          <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Vistas / Reportes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="vistasGeneral">General</a>
+                              <a class="dropdown-item" href="vistasAdmin">Adminstracion</a>
+                              <a class="dropdown-item" href="vistasPersona">Usuarios</a>
+                            </div>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="usuarioAdmin">Mantenedores</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Cuentas de Usuarios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="RegistroAdmin">Registrar Usuario</a>
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="logoutAdm">Desconectarse</a>
+                            </div>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Componentes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="triggerAdmin">Triggers B.D</a>
+                              <a class="dropdown-item" href="logAdmin">Visor de Sucesos (Log)</a>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul class="navbar-nav navbar-right col-sm-3">
+                          <div id="relojchile"></div><br>
+                          <div id="relojUTC"></div>
+                        </ul>
+                      </div>
+                        <!-- End of Topbar -->
+                        <!-- /.container-fluid -->
+                  </div>
+              </nav>
+
+              <main class="container">
+                <div class="bg-light p-5 rounded">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item" aria-current="page"><a href="/panelAdmin">Inicio</a></li>
+                      <li class="breadcrumb-item" aria-current="page"><a href="/vistasPersona">Vistas / Reportes</a></li>
+                      <li class="breadcrumb-item active" aria-current="page"><a href="/vistasPersona">Usuarios</a></li>
+                    </ol>
+                  </nav>
+                  <h1>Vistas Usuarios</h1>
+                  <p class="lead">En esta seccion se muestran todas las vistas integras (Todos los datos).</p>
+                  <!-- DataTales Example -->
+                    <!-- DataTales Example -->
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4 border-left-primary text-gray-900 bg-gray-200">
+                      <a href="#collapseCardExample3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                        <h6 class="m-0 font-weight-bold text-primary">Tabla Ficha Usuarios</h6>
+                      </a>
+                      <div class="collapse show" id="collapseCardExample3">
+                        <div class="card-body">
+                          <div class="table-responsive">
+                                <table id="" class="display table" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                              <th>ID Acceso</th>
+                                              <th>Nombre de usuario</th>
+                                              <th>Tipo de Usuario</th>
+                                              <th>Estado</th>
+                                              <th>Nombre Usuario</th>
+                                              <th>Apellidos Usuario</th>
+                                              <th>Comuna</th>
+                                              <th>ID Acceso</th>
+                                              <th>Nombre</th>
+                                              <th>Apellido</th>
+                                              <th>Comuna</th>
+                                              <th>Direccion</th>
+                                              <th>Telefono</th>
+                                              <th>Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot class="thead-dark">
+                                            <tr>
+                                              <th>ID Acceso</th>
+                                              <th>Nombre de usuario</th>
+                                              <th>Tipo de Usuario</th>
+                                              <th>Estado</th>
+                                              <th>Nombre Usuario</th>
+                                              <th>Apellidos Usuario</th>
+                                              <th>Comuna</th>
+                                              <th>ID Acceso</th>
+                                              <th>Nombre</th>
+                                              <th>Apellido</th>
+                                              <th>Comuna</th>
+                                              <th>Direccion</th>
+                                              <th>Telefono</th>
+                                              <th>Email</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <% vistasPersona.forEach((admin)=>{ %>
+                                            <tr>
+                                                <td><%= admin.a_id %></td>
+                                                <td><%= admin.a_cuenta %></td>
+                                                <td><%= admin.fk_tipo %></td>
+                                                <td><%= admin.act_desact %></td>
+                                                <td><%= admin.tp_id %></td>
+                                                <td><%= admin.tp_descripcion %></td>
+                                                <td><%= admin.p_rut %></td>
+                                                <td><%= admin.fk_id %></td>
+                                                <td><%= admin.p_nombre %></td>
+                                                <td><%= admin.p_apellidos %></td>
+                                                <td><%= admin.fk_comuna %></td>
+                                                <td><%= admin.p_direccion %></td>
+                                                <td><%= admin.p_telefono %></td>
+                                                <td><%= admin.p_email %></td>
+                                            </tr>
+                                            <% }) %>
+                                        </tbody>
+                                    </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </main>
+          </div>
+        <!-- End of Main Content -->
+  
+          <!-- Footer -->
+          <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+              <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Bicom 2021</span>
+              </div>
+            </div>
+          </footer>
+          <!-- End of Footer -->
+        </div>
+      <!-- End of Page Wrapper -->
+    </div>
+  
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+    </a>
+  
+    <!-- Bootstrap core JavaScript-->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+    <!-- Core plugin JavaScript-->
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  
+    <!-- Custom scripts for all pages-->
+    <script src="/assets/js/sb-admin-2.min.js"></script>
+  
+    <!-- Page level custom scripts -->
+    <script src="/assets/js/demo/datatables-demo.js"></script>
+    <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script >
+          function actual() {
+              fecha=new Date(); //Actualizar fecha.
+              hora=fecha.getHours(); //hora actual
+              minuto=fecha.getMinutes(); //minuto actual
+              segundo=fecha.getSeconds(); //segundo actual
+              if (hora<10) { //dos cifras para la hora
+                  hora="0"+hora;
+                  }
+              if (minuto<10) { //dos cifras para el minuto
+                  minuto="0"+minuto;
+                  }
+              if (segundo<10) { //dos cifras para el segundo
+                  segundo="0"+segundo;
+                  }
+              //devolver los datos:
+              mireloj = hora+" : "+minuto+" : "+segundo+" Hora local";	
+              return mireloj; 
+          }
+          function actualizar() { //función del temporizador
+              mihora=actual(); //recoger hora actual
+              mireloj=document.getElementById("relojchile"); //buscar elemento reloj
+              mireloj.innerHTML=mihora; //incluir hora en elemento
+          }
+          setInterval(actualizar,1000); //iniciar temporizador
+    </script>
+    <script>
+          window.setTimeout(function() {
+              $(".alert").fadeTo(10000, 0).slideDown(20000,
+              function(){
+                  $(this).remove();
+              }, 10000);
+          })
+    </script>
+    <script>
+          function actualUTC() {
+          var myDate = new Date();
+          hour = myDate.getUTCHours();
+          minutes = myDate.getUTCMinutes();
+          seconds = myDate.getUTCSeconds();
+          miclock = hour+" : "+minutes+" : "+seconds+" Hora UTC";
+          //myDate1=document.getElementById("reloj-id"); //buscar elemento reloj
+          //myDate1.innerHTML=mireloj; //incluir hora en elemento
+          return miclock;
+          }
+          function actualizarUTC() { //función del temporizador
+              myhour=actualUTC(); //recoger hora actual
+              miclock=document.getElementById("relojUTC"); //buscar elemento reloj
+              miclock.innerHTML=myhour; //incluir hora en elemento
+          }
+          setInterval(actualizarUTC,1000); //iniciar temporizador
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $('table.display').DataTable();
+      });
+  
+    </script>
+</body>
+</html>

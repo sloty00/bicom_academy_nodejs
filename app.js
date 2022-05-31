@@ -1,6 +1,5 @@
 const express  = require('express');
 const session = require('express-session')
-const expressLayouts = require('express-ejs-layouts')
 const path = require('path');
 const dotenv =  require('dotenv');
 const loggerHTTP =  require('morgan');
@@ -12,8 +11,6 @@ var log_file = fs.createWriteStream(__dirname + '/public/node.log', {flags : 'a'
 app.use(loggerHTTP({stream: log_file}));
 app.use(loggerHTTP('dev'));
 //seteamos el motor de plantillas
-app.use(expressLayouts);
-app.set('layout', 'layoutPrincipal');
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));

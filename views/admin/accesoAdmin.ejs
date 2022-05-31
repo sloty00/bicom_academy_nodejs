@@ -1,4 +1,54 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bicom Academy</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .internalbox {
+            width: 100%;
+            height: 100%;
+        }
+
+        .containerbox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
 <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
@@ -11,7 +61,7 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Ingreso a Sistema</h1>
                         </div>
-                        <form class="user" action="/accesoAdmin" method="POST">
+                        <form class="user" action="/accesoAdm" method="POST">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="user" name="user"
                                     placeholder="Nombre de Usuario">
@@ -35,3 +85,107 @@
     </div>
 
 </div>
+
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Bicom 2021</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/assets/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/assets/js/demo/chart-area-demo.js"></script>
+    <script src="/assets/js/demo/chart-pie-demo.js"></script>
+    <script src="/assets/js/demo/datatables-demo.js"></script>
+    <script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"></script>
+    <script >
+        function actual() {
+            fecha=new Date(); //Actualizar fecha.
+            hora=fecha.getHours(); //hora actual
+            minuto=fecha.getMinutes(); //minuto actual
+            segundo=fecha.getSeconds(); //segundo actual
+            if (hora<10) { //dos cifras para la hora
+                hora="0"+hora;
+                }
+            if (minuto<10) { //dos cifras para el minuto
+                minuto="0"+minuto;
+                }
+            if (segundo<10) { //dos cifras para el segundo
+                segundo="0"+segundo;
+                }
+            //devolver los datos:
+            mireloj = hora+" : "+minuto+" : "+segundo+" Hora local";	
+            return mireloj; 
+        }
+        function actualizar() { //función del temporizador
+            mihora=actual(); //recoger hora actual
+            mireloj=document.getElementById("relojchile"); //buscar elemento reloj
+            mireloj.innerHTML=mihora; //incluir hora en elemento
+        }
+        setInterval(actualizar,1000); //iniciar temporizador
+    </script>
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(10000, 0).slideDown(20000,
+            function(){
+                $(this).remove();
+            }, 10000);
+        })
+    </script>
+    <script>
+        function actualUTC() {
+        var myDate = new Date();
+        hour = myDate.getUTCHours();
+        minutes = myDate.getUTCMinutes();
+        seconds = myDate.getUTCSeconds();
+        miclock = hour+" : "+minutes+" : "+seconds+" Hora UTC";
+        //myDate1=document.getElementById("reloj-id"); //buscar elemento reloj
+        //myDate1.innerHTML=mireloj; //incluir hora en elemento
+        return miclock;
+        }
+        function actualizarUTC() { //función del temporizador
+            myhour=actualUTC(); //recoger hora actual
+            miclock=document.getElementById("relojUTC"); //buscar elemento reloj
+            miclock.innerHTML=myhour; //incluir hora en elemento
+        }
+        setInterval(actualizarUTC,1000); //iniciar temporizador
+    </script>
+</body>
+</html>
