@@ -5,8 +5,9 @@ exports.register = async (req, res)=>{
         const user = req.body.user
         const pass = req.body.pass
         const type = 2
+        const estado = 1
         if (user && pass) {
-            conexion.query('INSERT INTO tbl_acceso SET ?', {a_cuenta:user, a_password:pass, fk_tipo:type}, (error, result)=>{
+            conexion.query('INSERT INTO tbl_acceso SET ?', {a_cuenta:user, a_password:pass, fk_tipo:type, act_desact:estado}, (error, result)=>{
                 if(error){
                     console.log(error);
                 }else{

@@ -1,7 +1,43 @@
 const conexion = require('../database/db')
 const multer = require('multer')
+
 //--------------------------Panel Administrativo-----------------------------//
 
+mult_images = "";
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/img_bicom')
+    },
+    mult_images : false,
+    filename: function (req, file, cb) {
+      const mimeExtension = {
+          'image/jpeg':'.jpeg',
+          'image/jpg':'.jpg',
+          'image/png':'.png',
+          'image/gif':'.gif'
+      }
+      const uniqueSuffix = Date.now() + mimeExtension[file.mimetype];
+      cb(null, file.fieldname + '-' + uniqueSuffix)
+      mult_images = file.fieldname + '-' + uniqueSuffix
+      console.log(mult_images);
+    }
+})
+
+exports.uploadImage = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        console.log(file.mimetype)
+        if(file.mimetype === 'image/jpeg' || 
+        file.mimetype === 'image/jpg' || 
+        file.mimetype === 'image/png' ||
+        file.mimetype === 'image/gif') {
+            cb(null, true); 
+        } else {
+            cb(null, false);
+            req.fileError = 'Archivo: Formato invalido';
+        }
+    }
+ })
 
 exports.registroMantenedor = async (req, res)=>{
 
@@ -89,6 +125,16 @@ exports.registroMantenedor = async (req, res)=>{
 
     }
 
+    const sec_descripcion = req.body.sec_descripcion;
+    if(sec_descripcion){
+        conexion.query('INSERT INTO tbl_seccion SET ?', {sec_descripcion:sec_descripcion}, function(error, result){
+            if (error) throw error;
+            res.redirect('/usuarioAdmin')
+        });
+    } else {
+
+    }
+
     const con_encabezado = req.body.con_encabezado;
     const con_descripcion = req.body.con_descripcion;
     const fk_cursos = req.body.fk_cursos;
@@ -101,44 +147,36 @@ exports.registroMantenedor = async (req, res)=>{
         
     }
 
-    const mul_video = req.body.mul_video;
-    const mul_image = req.body.mul_image;
-    const mul_URL = req.body.mul_URL;
-    const mul_fecha = req.body.mul_fecha;
-    const fk_curso = req.body.fk_curso;
-    if(mul_video && mul_image && mul_URL && mul_fecha && fk_curso){
-
-        const storage = multer.diskStorage({
-            destination: function (req, file, cb) {
-              cb(null, '/img_bicom')
-            },
-            filename: function (req, file, cb) {
-              const mimeExtension = {
-                  'image/jpeg':'jpeg',
-                  'image/jpg':'jpg',
-                  'image/png':'png',
-                  'image/gif':'gif',
-              }
-              const uniqueSuffix = Date.now() + mimeExtension[file.mimetype];
-              cb(null, file.fieldname + '-' + uniqueSuffix)
-            }
-          })
-          
-        const upload = multer({ storage: storage })
-
-//        conexion.query('INSERT INTO tbl_multimedios SET ?', {mul_video:mul_video,mul_image:mul_image, mul_URL:mul_URL, mul_fecha:mul_fecha, fk_cursos:fk_curso}, function(error, result){
-//            if (error) throw error;
-//            res.redirect('/usuarioAdmin')
-//        });
+    const fk_cursoc = req.body.fk_cursoc;
+    const fk_persona = req.body.fk_persona;
+    const cal_nota = req.body.cal_nota;
+    if(cal_nota && fk_cursoc && fk_persona){
+        conexion.query('INSERT INTO tbl_calificacion SET ?', {cal_nota:cal_nota, fk_curso:fk_cursoc, fk_persona:fk_persona}, function(error, result){
+            if (error) throw error;
+            res.redirect('/usuarioAdmin')
+        });
     } else {
         
     }
 
+    const mul_URL = req.body.mul_URL;
+    const mul_fecha = req.body.mul_fecha;
+    const fk_seccion = req.body.fk_seccion;
+    const fk_curso = req.body.fk_curso;
+    if(mult_images && mul_URL && mul_fecha && fk_curso){
+
+        conexion.query('INSERT INTO tbl_multimedios SET ?', {mul_images:mult_images, mul_URL:mul_URL, mul_fecha:mul_fecha, fk_seccion:fk_seccion, fk_curso:fk_curso}, function(error, result){
+            if (error) throw error;
+            res.redirect('/usuarioAdmin')
+        });
+    } else {
+        
+    }
 }
 
 exports.tablaGeneral = (req, res)=>{
     conexion.query("SELECT * from tbl_tipo;" + 
-                    "SELECT * from tbl_acceso;"+
+                    "SELECT a_id, a_cuenta, a_password, fk_tipo, if (act_desact = 1, 'Activado', 'Desactivado') as act_desact  FROM `tbl_acceso`;"+
                     "SELECT * FROM tbl_persona;"+
                     "SELECT * FROM tbl_comuna;"+
                     "SELECT * FROM tbl_provincia;" +
@@ -170,10 +208,11 @@ exports.ususarioAdminDrop = (req, res)=>{
                     "SELECT p_cut, descripcion FROM tbl_provincia;" +
                     "SELECT r_cut, r_descripcion FROM tbl_region;" +
                     "SELECT pa_cut, pa_descripcion FROM tbl_pais;" +
-                    "SELECT p_rut, p_nombre FROM tbl_persona;" +
-                    "SELECT cu_id, cu_descripcion FROM tbl_cursos", [1, 2, 3, 4, 5, 6, 7, 8], function(err, results) {
+                    "SELECT p_rut, p_nombre, p_apellidos FROM tbl_persona;" +
+                    "SELECT cu_id, cu_descripcion FROM tbl_cursos;" +
+                    "SELECT sec_id, sec_descripcion FROM tbl_seccion", [1, 2, 3, 4, 5, 6, 7, 8, 9], function(err, results) {
         if (err) throw err;
-        res.render('admin/usuarioAdmin', {tipo:results[0], acceso:results[1], comuna:results[2], provincia:results[3], region:results[4], pais:results[5], persona:results[6], cursos:results[7]});
+        res.render('admin/usuarioAdmin', {tipo:results[0], acceso:results[1], comuna:results[2], provincia:results[3], region:results[4], pais:results[5], persona:results[6], cursos:results[7], seccion:results[8]});
     });
 }
 

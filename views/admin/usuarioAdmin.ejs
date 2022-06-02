@@ -363,11 +363,11 @@
                                     <div class="form-row">
                                       <div class="form-group col-md-6">
                                         
-                                        <label for="fk_rut">Nombre / Rut</label>
+                                        <label for="fk_rut">Nombre Completo</label>
                                         <select id="fk_rut" name="fk_rut" class="form-control">
                                           <option selected>Elegir...</option>
                                           <% persona.forEach((admin)=>{ %>
-                                          <option value="<%=admin.p_rut%>"><%= admin.p_nombre %> / <%= admin.p_rut %></option>
+                                          <option value="<%=admin.p_rut%>"><%= admin.p_nombre %> / <%= admin.p_apellidos %></option>
                                           <%})%>
                         
                                         </select>
@@ -382,6 +382,26 @@
                                 </div>
                               </div>
                             </div>
+
+                            <!-- Basic Card Example -->
+                          <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Tabla Seccion</h6>
+                            </div>
+                            <div class="card-body">
+                              <div class="card-body">
+                                <form class="tipo" action="/usuarioAdmin" method="POST">
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="inputAddress">Seccion</label>
+                                      <input type="text" class="form-control" id="sec_descripcion" name="sec_descripcion" placeholder="Pagina Seccion">
+                                    </div>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Guardar</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
   
                           <!-- Basic Card Example -->
                           <div class="card shadow mb-4">
@@ -420,11 +440,48 @@
 
                           <div class="card shadow mb-4">
                             <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Tabla Calificacion</h6>
+                            </div>
+                            <div class="card-body">
+                              <div class="card-body">
+                                <form class="tipo" action="/usuarioAdmin" enctype="multipart/form-data" method="post">
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="fk_cursoc">Curso</label>
+                                      <select id="fk_cursoc" name="fk_cursoc" class="form-control">
+                                        <option selected>Elegir...</option>
+                                            <% cursos.forEach((admin)=>{ %>
+                                              <option value="<%=admin.cu_id%>"><%= admin.cu_descripcion %></option>
+                                            <%})%>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="fk_persona">Nombre Completo</label>
+                                      <select id="fk_persona" name="fk_persona" class="form-control">
+                                        <option selected>Elegir...</option>
+                                            <% persona.forEach((admin)=>{ %>
+                                              <option value="<%=admin.p_rut%>"><%= admin.p_nombre %> / <%= admin.p_apellidos %></option>
+                                            <%})%>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputAddress">Nota</label>
+                                    <input type="text" class="form-control" id="cal_nota" name="cal_nota" placeholder="Nota promedio del alumno">
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Guardar</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card shadow mb-4">
+                            <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Tabla Multimedios</h6>
                             </div>
                             <div class="card-body">
                               <div class="card-body">
-                                <form class="tipo" action="/usuarioAdmin" method="POST">
+                                <form class="tipo" action="/usuarioAdmin" enctype="multipart/form-data" method="post">
                                   <div class="form-row">
                                     <div class="form-group col-md-6">
                                       <label for="inputState">Curso</label>
@@ -436,46 +493,29 @@
                                       </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                      <label for="mul_video" class="form-label">Video</label>
-                                      <input class="form-control" name="mul_video" id="mul_video" type="file">
-                                    </div>
-                                  </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="mul_images" class="form-label">Imagen</label>
-                                    <input class="form-control" id="mul_images" name="mul_images" type="file">
-                                  </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="mul_URL">Enlace</label>
-                                    <input type="text" class="form-control" id="mul_URL" name="mul_URL" placeholder="Enlace">
-                                  </div>
-                                  <div class="form-group col-md-6"> <!-- Date input -->
-                                    <label class="control-label" for="mul_fecha">Date</label>
-                                    <input class="form-control" id="mul_fecha" name="mul_fecha" name="date" placeholder="MM/DD/YYY" type="text"/>
-                                  </div>
-                                  <button type="submit" class="btn btn-primary">Guardar</button>
-                                </form>
-                              </div>
-                            </div>
-                        </div>
-
-                          <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Tabla Calificacion</h6>
-                            </div>
-                            <div class="card-body">
-                              <div class="card-body">
-                                <form class="tipo" action="/usuarioAdmin" method="POST">
-                                  <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                      <label for="inputState">Rut</label>
-                                      <select id="fk_id" name="fk_id" class="form-control">
+                                      <label for="fk_seccion" class="form-label">Seccion</label>
+                                      <select id="fk_seccion" name="fk_seccion" class="form-control">
                                         <option selected>Elegir...</option>
-                                          <option value="">Rut</option>
+                                          <% seccion.forEach((admin)=>{ %>
+                                            <option value="<%=admin.sec_id%>"><%= admin.sec_descripcion %></option>
+                                          <%})%>
                                       </select>
                                     </div>
+                                  </div>
+                                  <div class="form-row">
                                     <div class="form-group col-md-6">
-                                      <label for="inputAddress">Nota</label>
-                                      <input type="text" class="form-control" id="p_rut" name="p_rut" placeholder="Encabezado del contenido">
+                                      <label for="images1" class="form-label">Imagenes</label>
+                                      <input class="form-control" id="images1" name="images1" type="file">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="mul_URL">Enlace</label>
+                                      <input type="text" class="form-control" id="mul_URL" name="mul_URL" placeholder="Enlace">
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6"> <!-- Date input -->
+                                      <label class="control-label" for="mul_fecha">Fecha</label>
+                                      <input class="form-control" id="mul_fecha" name="mul_fecha" name="date" placeholder="AAAA/MM/DD" type="text"/>
                                     </div>
                                   </div>
                                   <button type="submit" class="btn btn-primary">Guardar</button>
@@ -484,16 +524,16 @@
                             </div>
                         </div>
   
-                          </div>
-
-                        </div>
                       </div>
 
                     </div>
                   </div>
+
+                </div>
+              </div>
               <!-- /.container-fluid -->
                               <!-- /.container-fluid -->
-                </main>
+            </main>
             </div>
             <!-- End of Main Content -->
 
@@ -598,15 +638,20 @@
 
 <script>
   $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      date_input.datepicker({
-          format: 'mm/dd/yyyy',
+        var date_input=$('input[name="mul_fecha"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+          format: 'yyyy/mm/dd',
           container: container,
           todayHighlight: true,
           autoclose: true,
-      })
+        };
+        date_input.datepicker(options);
   })
+  $("#submit").click(function(e){
+   e.preventDefault();
+   $("#date").datepicker().focus();
+ })
 </script>
 </body>
 </html>

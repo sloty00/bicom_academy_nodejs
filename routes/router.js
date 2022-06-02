@@ -2,7 +2,7 @@ const express  = require('express')
 const router = express.Router()
 const {protected, register, login, logout } = require('../controller/authController');
 const { registroAdmin, accesoAdmin, protectedAdmin, logoutAdmin } = require ('../controller/adminController');
-const { registroMantenedor, tablaGeneral, vistaAdmin, vistaPersona, ususarioAdminDrop, preupdateAdminTipo, preupdateAdminAdmin, preupdateAdminPerfil, preupdateAdminPais, preupdateAdminRegion, preupdateAdminProvincia, preupdateAdminComuna, editAdminTipo, editAdminAdmin, editAdminPerfil, editAdminPais, editAdminRegion, editAdminProvincia, editAdminComuna, deshabilitarAcceso, habilitarAcceso, triggersAdmin } = require ('../controller/cursoController');
+const { registroMantenedor, tablaGeneral, vistaAdmin, vistaPersona, ususarioAdminDrop, preupdateAdminTipo, preupdateAdminAdmin, preupdateAdminPerfil, preupdateAdminPais, preupdateAdminRegion, preupdateAdminProvincia, preupdateAdminComuna, editAdminTipo, editAdminAdmin, editAdminPerfil, editAdminPais, editAdminRegion, editAdminProvincia, editAdminComuna, deshabilitarAcceso, habilitarAcceso, triggersAdmin, uploadImage } = require ('../controller/cursoController');
 const { panelPrincipal, accesoPrincipal, registroPrincipal} = require('../middleware/authMiddleware');
 const { panelAdmin, registroAdm, accesoAdm, vistasGeneral, vistasAdmin, vistasPersona, usuarioAdmin, triggerAdmin, editAdminTip, editAdminAdm, editAdminPerf, editAdminPai, editAdminReg, editAdminProv, editAdminCom, deshabilitarAcc, habilitarAcc, logAdmin} = require('../middleware/adminMiddleware');
 //------------------------------Panel Principal----------------------------------//
@@ -41,7 +41,7 @@ router.get('/deshabilitarAcc/:a_id', deshabilitarAcceso,  deshabilitarAcc);
 router.get('/habilitarAcc/:a_id', habilitarAcceso,  habilitarAcc);
 
 router.post('/registroAdm', registroAdmin);
-router.post('/usuarioAdmin', registroMantenedor);
+router.post('/usuarioAdmin', uploadImage.single('images1'), registroMantenedor);
 router.post('/editAdminTip', editAdminTipo);
 router.post('/editAdminAdm', editAdminAdmin);
 router.post('/editAdminPerf', editAdminPerfil);

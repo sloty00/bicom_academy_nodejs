@@ -41,82 +41,81 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <!-- Sidebar -->
+                <ul class="navbar-nav bg-gradient-light sidebar sidebar-light accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex center_content align-items-center" href="login1">
-                <div class="logo-normal">
-                    <img src="img/logo_bicom.png" height="90" class="d-inline-block align-top" alt="">
-                </div>
-            </a>
-        </br>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-fw fa-tasks"></i>
-                    <span>Bicom Academy</span></a>
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#vistas"
-                    aria-expanded="true" aria-controls="vistas">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Vistas y Reportes</span>
-                </a>
-                <div id="vistas" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Vistas</a>
-                        <a class="collapse-item" href="utilities-border.html">Graficos</a>
-                        <a class="collapse-item" href="utilities-animation.html">Reportes</a>
+                    <!-- Sidebar - Brand -->
+                    <a class="sidebar-brand d-flex center_content align-items-center" href="login1">
+                        <div class="logo-normal">
+                            <img src="img/logo_bicom.png" height="90" class="d-inline-block align-top" alt="">
+                        </div>
+                    </a>
+                </br>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+        
+                    <!-- Nav Item - Dashboard -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-fw fa-home"></i>
+                            <span>Bicom Academy</span></a>
+                    </li>
+        
+                    <!-- Nav Item - Pages Collapse Menu -->
+        
+                    <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#vistas"
+                            aria-expanded="true" aria-controls="vistas">
+                            <i class="fas fa-fw fa-school"></i>
+                            <span>Contenido</span>
+                        </a>
+                        <div id="vistas" class="collapse" aria-labelledby="headingUtilities"
+                            data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="#">Comienza el curso.</a>
+                            </div>
+                        </div>
+                    </li>
+        
+                    <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#mantenedores"
+                            aria-expanded="true" aria-controls="mantenedores">
+                            <i class="fas fa-fw fa-clipboard"></i>
+                            <span>Calificaciones</span>
+                        </a>
+                        <div id="mantenedores" class="collapse" aria-labelledby="headingUtilities"
+                            data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="utilities-color.html">Notas Periodo</a>
+                                <a class="collapse-item" href="utilities-border.html">Promedio Gweneral</a>
+                            </div>
+                        </div>
+                    </li>
+        
+                    <!-- Nav Item - Pages Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuentasusuario"
+                            aria-expanded="true" aria-controls="cuentasusuario">
+                            <i class="fas fa-fw fa-user"></i>
+                            <span>Cuentas de usuario</span>
+                        </a>
+                        <div id="cuentasusuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="accesoPrincipal">Perfil de Usuario</a>
+                                <a class="collapse-item" href="logout">Completar Perfil</a>
+                                <a class="collapse-item" href="logout">Generar Certificado</a>
+                                <a class="collapse-item" href="logout">Desconectarse</a>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="text-center d-none d-md-inline">
+                        <button class="rounded-circle border-0" id="sidebarToggle"></button>
                     </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#mantenedores"
-                    aria-expanded="true" aria-controls="mantenedores">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Mantenedores</span>
-                </a>
-                <div id="mantenedores" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Vistas</a>
-                        <a class="collapse-item" href="utilities-border.html">Graficos</a>
-                        <a class="collapse-item" href="utilities-animation.html">Reportes</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuentasusuario"
-                    aria-expanded="true" aria-controls="cuentasusuario">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Cuentas de usuario</span>
-                </a>
-                <div id="cuentasusuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="accesoPrincipal">Perfil de Usuario</a>
-                        <a class="collapse-item" href="logout">Desconectarse</a>
-                    </div>
-                </div>
-            </li>
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
+        
+                </ul>
+                <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
