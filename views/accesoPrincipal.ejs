@@ -34,23 +34,28 @@
         }
     </style>
 
+    <style type="text/css">
+        a.disabled{
+            /* Make the disabled links grayish*/
+        color: gray;
+        /* And disable the pointer events */
+        pointer-events: none;
+        }
+    </style>
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
                 <!-- Sidebar -->
                 <ul class="navbar-nav bg-gradient-light sidebar sidebar-light accordion" id="accordionSidebar">
-
                     <!-- Sidebar - Brand -->
                     <a class="sidebar-brand d-flex center_content align-items-center" href="login1">
                         <div class="logo-normal">
-                            <img src="img/logo_bicom.png" height="90" class="d-inline-block align-top" alt="">
+                            <img src="img_bicom/planillas/64x64.jpg" width="50" height="50" alt="">
                         </div>
                     </a>
-                </br>
+                    </br>
                     <!-- Divider -->
                     <hr class="sidebar-divider my-0">
         
@@ -72,9 +77,6 @@
                         </a>
                         <div id="vistas" class="collapse" aria-labelledby="headingUtilities"
                             data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="#">Comienza el curso.</a>
-                            </div>
                         </div>
                     </li>
         
@@ -85,13 +87,6 @@
                             <i class="fas fa-fw fa-clipboard"></i>
                             <span>Calificaciones</span>
                         </a>
-                        <div id="mantenedores" class="collapse" aria-labelledby="headingUtilities"
-                            data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="utilities-color.html">Notas Periodo</a>
-                                <a class="collapse-item" href="utilities-border.html">Promedio Gweneral</a>
-                            </div>
-                        </div>
                     </li>
         
                     <!-- Nav Item - Pages Collapse Menu -->
@@ -101,14 +96,6 @@
                             <i class="fas fa-fw fa-user"></i>
                             <span>Cuentas de usuario</span>
                         </a>
-                        <div id="cuentasusuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="accesoPrincipal">Perfil de Usuario</a>
-                                <a class="collapse-item" href="logout">Completar Perfil</a>
-                                <a class="collapse-item" href="logout">Generar Certificado</a>
-                                <a class="collapse-item" href="logout">Desconectarse</a>
-                            </div>
-                        </div>
                     </li>
                     <div class="text-center d-none d-md-inline">
                         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -143,14 +130,11 @@
                                         <div class="form-group">
                                                 <input type="password" class="form-control form-control-user" id="pass" name="pass" placeholder="Password">
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-arrow-right"></i>  Ingreso</button>
-
-                                            <a href="#" class="btn btn-google btn-block"><i class="fab fa-google fa-fw"></i>
-                                                Ingreso con Google</a>
-                                            <a href="#" class="btn btn-facebook btn-block"><i
-                                                    class="fab fa-facebook-f fa-fw"></i>Ingreso con Facebook</a>
-
+                                        <button type="submit" class="btn btn-success btn-block"><i class="fas fa-arrow-right"></i>  Ingreso</button>
                                     </form>
+                                    <a href="registroPrincipal" class="btn btn-primary btn-block"><i class="fas fa-fw fa-clipboard"></i>Registro</a>
+                                    <a href="#" class="btn btn-google btn-block"><i class="fab fa-google fa-fw"></i>Ingreso con Google</a>
+                                    <a href="#" class="btn btn-facebook btn-block"><i class="fab fa-facebook-f fa-fw"></i>Ingreso con Facebook</a>
                                     <%if(message){%>
                                     <div class="alert alert-warning" role="alert">
                                         <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>

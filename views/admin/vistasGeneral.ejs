@@ -145,7 +145,7 @@
                                                 <td><%= admin.tp_id %></td>
                                                 <td><%= admin.tp_descripcion %></td>
                                                 <td colspan="1" align="center">
-                                                    <a href="/editAdminTip/<%= admin.tp_id %>" class="btn"><i class="fa-xs fas fa-pen" aria-hidden="true"></i></a>
+                                                    <a href="/editAdminTip/<%= admin.tp_id %>" class="btn" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-xs fas fa-pen" aria-hidden="true"></i></a>
                                                 </td>
                                             </tr>
                                             <% }) %>
@@ -193,9 +193,9 @@
                                                   <td><%= admin.fk_tipo %></td>
                                                   <td><%= admin.act_desact %></td>
                                                   <td colspan="1" align="center">
-                                                        <a href="/editAdminAdm/<%= admin.a_id %>" class="btn"><i class="fa-xs fas fa-pen"></i></a>
-                                                        <a href="/habilitarAcc/<%= admin.a_id %>" class="btn"><i class="fa-xs fas fa-user-check"></i></a>
-                                                        <a href="/deshabilitarAcc/<%= admin.a_id %>" class="btn"><i class="fa-xs fas fa-user-slash"></i></a> 
+                                                        <a href="/editAdminAdm/<%= admin.a_id %>" class="btn" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-xs fas fa-pen"></i></a>
+                                                        <a href="/habilitarAcc/<%= admin.a_id %>" class="btn" data-toggle="tooltip" data-placement="top" title="Habilitar"><i class="fa-xs fas fa-user-check"></i></a>
+                                                        <a href="/deshabilitarAcc/<%= admin.a_id %>" class="btn" data-toggle="tooltip" data-placement="top" title="Deshabilitar"><i class="fa-xs fas fa-user-slash"></i></a> 
                                                   </td>
                                               </tr>
                                               <% }) %>
@@ -252,7 +252,7 @@
                                                 <td><%= admin.p_telefono %></td>
                                                 <td><%= admin.p_email %></td>
                                                 <td colspan="4" align="center">
-                                                    <a href="/editAdminPerf/<%= admin.p_rut %>" class="btn"><i class="fa-xs fas fa-pen"></i></a>
+                                                    <a href="/editAdminPerf/<%= admin.p_rut %>" class="btn" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-xs fas fa-pen"></i></a>
                                                 </td>
                                             </tr>
                                             <% }) %>
@@ -291,7 +291,7 @@
                                               <td><%= admin.pa_cut %></td>
                                               <td><%= admin.pa_descripcion %></td>
                                               <td colspan="1" align="center">
-                                                <a href="/editAdminPai/<%= admin.pa_cut %>" class="btn"><i class="fa-xs fas fa-pen"></i></a>
+                                                <a href="/editAdminPai/<%= admin.pa_cut %>" class="btn" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-xs fas fa-pen"></i></a>
                                               </td>
                                           </tr>
                                           <% }) %>
@@ -333,7 +333,7 @@
                                               <td><%= admin.r_descripcion %></td>
                                               <td><%= admin.fk_pais %></td>
                                               <td colspan="1" align="center">
-                                                <a href="/editAdminReg/<%= admin.r_cut %>" class="btn"><i class="fa-xs fas fa-pen"></i></a>
+                                                <a href="/editAdminReg/<%= admin.r_cut %>" class="btn" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-xs fas fa-pen"></i></a>
                                               </td>
                                           </tr>
                                           <% }) %>
@@ -375,7 +375,7 @@
                                               <td><%= admin.descripcion %></td>
                                               <td><%= admin.fk_region %></td>
                                               <td colspan="1" align="center">
-                                                <a href="/editAdminProv/<%= admin.p_cut %>" class="btn"><i class="fa-xs fas fa-pen"></i></a>
+                                                <a href="/editAdminProv/<%= admin.p_cut %>" class="btn" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-xs fas fa-pen"></i></a>
                                               </td>
                                           </tr>
                                           <% }) %>
@@ -417,7 +417,7 @@
                                                 <td><%= admin.c_descripcion %></td>
                                                 <td><%= admin.fk_provincia %></td>
                                                 <td colspan="1" align="center">
-                                                  <a href="/editAdminCom/<%= admin.c_cut %>" class="btn"><i class="fa-xs fas fa-pen"></i></a>
+                                                  <a href="/editAdminCom/<%= admin.c_cut %>" class="btn" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-xs fas fa-pen"></i></a>
                                                 </td>
                                             </tr>
                                             <% }) %>
@@ -527,7 +527,12 @@
       $(document).ready(function () {
           $('table.display').DataTable();
       });
-  
+    </script>
+
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
     </script>
 </body>
 </html>

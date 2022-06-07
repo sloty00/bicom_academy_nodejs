@@ -47,7 +47,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center" href="login1">
                 <div class="logo-normal">
-                    
+                    <img src="img_bicom/planillas/64x64.jpg" width="50" height="50" alt="">
                 </div>
             </a>
         </br>
@@ -57,7 +57,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/">
-                    <i class="fas fa-fw fa-tasks"></i>
+                    <i class="fas fa-fw fa-home"></i>
                     <span>Bicom Academy</span></a>
             </li>
 
@@ -67,7 +67,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#vistas"
                     aria-expanded="true" aria-controls="vistas">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-school"></i>
                     <span>Vistas y Reportes</span>
                 </a>
                 <div id="vistas" class="collapse" aria-labelledby="headingUtilities"
@@ -125,46 +125,54 @@
             <div id="content">
 
                 <!-- Begin Page Content -->
-<div class="container">
+                <div class="container">
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div>
-                <div></div>
-                <div>
-                    <div class="p-5">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Crear Cuenta</h1>
+                    <div class="card o-hidden border-0 shadow-lg my-5">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div>
+                                <div></div>
+                                <div>
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Crear Cuenta</h1>
+                                        </div>
+                                        
+                                        <form class="user" action="/registroPrincipal" method="POST">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="user" name="user"
+                                                    placeholder="Nombre de Usuario">
+                                            </div>
+                                            <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="pass" name="pass" placeholder="Password">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">Registrar</button>
+                                        </form>
+                                        <%if(message){%>
+                                            <div class="alert alert-warning" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                                                <strong>Alerta: </strong><%=message%>
+                                            </div>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <form class="user" action="/registroPrincipal" method="POST">
-                            <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="user" name="user"
-                                    placeholder="Nombre de Usuario">
-                            </div>
-                            <div class="form-group">
-                                    <input type="password" class="form-control form-control-user"
-                                        id="pass" name="pass" placeholder="Password">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">Registrar</button>
-                        </form>
-                        <%if(message){%>
-                            <div class="alert alert-warning" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
-                                <strong>Alerta: </strong><%=message%>
-                            </div>
-                        <%}%>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-</div>
+                </div>
 
                 <!-- /.container-fluid -->
-
+                <content>
+                    <div class="p-5">
+                      <div class="text-center form-group">
+                        <input type="text" class="form-control" id="txt_rut" name="txt_rut" placeholder="Rut a validar, ej: 11111111-1">
+                      </div>
+                      <button id="btnvalida" class="btn btn-primary btn-block">Valida Rut</button>
+                      <p id="msgerror"></p>
+                    </div>
+                  </content>
             </div>
             <!-- End of Main Content -->
 
@@ -212,5 +220,36 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"></script>
+    <script>
+        var Fn = {
+            // Valida el rut con su cadena completa "XXXXXXXX-X"
+            validaRut : function (rutCompleto) {
+                rutCompleto = rutCompleto.replace("‐","-");
+                if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                return false;
+                var tmp   = rutCompleto.split('-');
+                var digv  = tmp[1]; 
+                var rut   = tmp[0];
+                if ( digv == 'K' ) digv = 'k' ;
+                
+                return (Fn.dv(rut) == digv );
+            },
+            dv : function(T){
+                var M=0,S=1;
+                for(;T;T=Math.floor(T/10))
+                S=(S+T%10*(9-M++%6))%11;
+                return S?S-1:'k';
+            }
+        }
+
+
+        $("#btnvalida").click(function(){
+            if (Fn.validaRut( $("#txt_rut").val() )){
+                $("#msgerror").html("El rut ingresado es válido :D");
+            } else {
+                $("#msgerror").html("El Rut no es válido :'( ");
+            }
+        });
+    </script>
 </body>
 </html>

@@ -48,6 +48,8 @@ app.use(function (err, req, res, next) {
 //Llamar al router
 app.use('/', require('./routes/router'));
 
+
+
 app.listen(3000, ()=>{
     console.log('SERVER UP running in http://localhost:3000');
 })

@@ -5,10 +5,20 @@ const { registroAdmin, accesoAdmin, protectedAdmin, logoutAdmin } = require ('..
 const { registroMantenedor, tablaGeneral, vistaAdmin, vistaPersona, ususarioAdminDrop, preupdateAdminTipo, preupdateAdminAdmin, preupdateAdminPerfil, preupdateAdminPais, preupdateAdminRegion, preupdateAdminProvincia, preupdateAdminComuna, editAdminTipo, editAdminAdmin, editAdminPerfil, editAdminPais, editAdminRegion, editAdminProvincia, editAdminComuna, deshabilitarAcceso, habilitarAcceso, triggersAdmin, uploadImage } = require ('../controller/cursoController');
 const { panelPrincipal, accesoPrincipal, registroPrincipal} = require('../middleware/authMiddleware');
 const { panelAdmin, registroAdm, accesoAdm, vistasGeneral, vistasAdmin, vistasPersona, usuarioAdmin, triggerAdmin, editAdminTip, editAdminAdm, editAdminPerf, editAdminPai, editAdminReg, editAdminProv, editAdminCom, deshabilitarAcc, habilitarAcc, logAdmin} = require('../middleware/adminMiddleware');
+const { contenido1, contenido2, contenido3, contenido4, contenido5, contenido6, contenido7, prueba, prueba1 } = require('../middleware/cursoMiddleware');
 //------------------------------Panel Principal----------------------------------//
 
 //router.get('/', authController.protected, panelPrincipal)
 router.get('/', protected, panelPrincipal);
+router.get('/contenido1', contenido1);
+router.get('/contenido2', contenido2);
+router.get('/contenido3', contenido3);
+router.get('/contenido4', contenido4);
+router.get('/contenido5', contenido5);
+router.get('/contenido6', contenido6);
+router.get('/contenido7', contenido7);
+router.get('/prueba', prueba);
+router.get('/prueba1', prueba1);
 router.get('/accesoPrincipal', accesoPrincipal);
 router.get('/registroPrincipal', registroPrincipal);
 router.get('/logout', logout);
