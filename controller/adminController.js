@@ -1,5 +1,4 @@
 const conexion = require('../database/db')
-const { vistaAdmin } = require('./cursoController')
 
 exports.registroAdmin = async (req, res)=>{
     try {
@@ -67,6 +66,18 @@ exports.protectedAdmin = async (req, res)=>{
 	if (req.session.loggedIn) {
 		// Output username
 		res.render('panelAdmin')
+	} else {
+		// Not logged in
+		res.redirect('accesoAdm')
+	}
+	res.end();
+}
+
+exports.protectedReg = async (req, res)=>{
+    // If the user is loggedin
+	if (req.session.loggedIn) {
+		// Output username
+		res.render('registroAdm')
 	} else {
 		// Not logged in
 		res.redirect('accesoAdm')

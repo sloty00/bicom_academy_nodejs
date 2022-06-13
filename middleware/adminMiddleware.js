@@ -19,7 +19,8 @@ const vistasGeneral = (req, res)=>{
 }
 
 const vistasAdmin = (req, res)=>{
-    res.render('admin/vistasAdmin')
+    console.log("asdfasdfasdf")
+   // res.render('admin/vistasAdmin')
 }
 
 const vistasPersona = (req, res)=>{

@@ -1,10 +1,10 @@
 const express  = require('express')
 const router = express.Router()
 const {protected, protected1, register, login, logout, protected3, protected2, protected4, protected5, protected6, protected7 } = require('../controller/authController');
-const { registroAdmin, accesoAdmin, protectedAdmin, logoutAdmin } = require ('../controller/adminController');
+const { registroAdmin, accesoAdmin, protectedAdmin, protectedReg, logoutAdmin } = require ('../controller/adminController');
 const { registroMantenedor, tablaGeneral, vistaAdmin, vistaPersona, ususarioAdminDrop, preupdateAdminTipo, preupdateAdminAdmin, preupdateAdminPerfil, preupdateAdminPais, preupdateAdminRegion, preupdateAdminProvincia, preupdateAdminComuna, editAdminTipo, editAdminAdmin, editAdminPerfil, editAdminPais, editAdminRegion, editAdminProvincia, editAdminComuna, deshabilitarAcceso, habilitarAcceso, triggersAdmin, uploadImage } = require ('../controller/cursoController');
 const { panelPrincipal, accesoPrincipal, registroPrincipal} = require('../middleware/authMiddleware');
-const { panelAdmin, registroAdm, accesoAdm, vistasGeneral, vistasAdmin, vistasPersona, usuarioAdmin, triggerAdmin, editAdminTip, editAdminAdm, editAdminPerf, editAdminPai, editAdminReg, editAdminProv, editAdminCom, deshabilitarAcc, habilitarAcc, logAdmin} = require('../middleware/adminMiddleware');
+const { panelAdmin, registroAdm, accesoAdm, vistasGeneral, vistasPersona, usuarioAdmin, triggerAdmin, editAdminTip, editAdminAdm, editAdminPerf, editAdminPai, editAdminReg, editAdminProv, editAdminCom, deshabilitarAcc, habilitarAcc, logAdmin, vistasAdmin} = require('../middleware/adminMiddleware');
 const { contenido1, contenido2, contenido3, contenido4, contenido5, contenido6, contenido7 } = require('../middleware/cursoMiddleware');
 //------------------------------Panel Principal----------------------------------//
 
@@ -25,15 +25,15 @@ router.post('/accesoPrincipal', login)
 
 //-----------------------------Panel Administrativo------------------------------//
 
-router.get('/panelAdmin', protectedAdmin, panelAdmin);
-router.get('/registroAdm', protectedAdmin, registroAdm);
+router.get('/panelAdmin', protectedAdmin);
+router.get('/registroAdm', protectedReg, registroAdm);
 router.get('/accesoAdm', accesoAdm);
-router.get('/vistasGeneral', tablaGeneral, vistasGeneral);
-router.get('/vistasAdmin', protectedAdmin, vistaAdmin, vistasAdmin);
-router.get('/vistasPersona', protectedAdmin, vistaPersona, vistasPersona);
-router.get('/usuarioAdmin', protectedAdmin, ususarioAdminDrop, usuarioAdmin);
+router.get('/vistasGeneral', tablaGeneral);
+router.get('/vistasAdmin', vistaAdmin);
+router.get('/vistasPersona', vistaPersona);
+router.get('/usuarioAdmin', ususarioAdminDrop);
 router.get('/logAdmin', logAdmin)
-router.get('/triggerAdmin', (protectedAdmin, triggersAdmin), triggerAdmin);
+router.get('/triggerAdmin', triggersAdmin);
 router.get('/editAdminTip/:tp_id', preupdateAdminTipo, editAdminTip);
 router.get('/editAdminAdm/:a_id', preupdateAdminAdmin, editAdminAdm);
 router.get('/editAdminPerf/:p_rut', preupdateAdminPerfil, editAdminPerf);

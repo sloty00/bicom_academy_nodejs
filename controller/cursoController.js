@@ -175,7 +175,8 @@ exports.registroMantenedor = async (req, res)=>{
 }
 
 exports.tablaGeneral = (req, res)=>{
-    conexion.query("SELECT * from tbl_tipo;" + 
+    if (req.session.loggedIn) {
+		conexion.query("SELECT * from tbl_tipo;" + 
                     "SELECT a_id, a_cuenta, a_password, fk_tipo, if (act_desact = 1, 'Activado', 'Desactivado') as act_desact  FROM `tbl_acceso`;"+
                     "SELECT * FROM tbl_persona;"+
                     "SELECT * FROM tbl_comuna;"+
@@ -185,24 +186,46 @@ exports.tablaGeneral = (req, res)=>{
         if (err) throw err;
         res.render('admin/vistasGeneral', {tipo:results[0], acceso:results[1], persona:results[2], comuna:results[3], provincia:results[4], region:results[5], pais:results[6]});
     });
+	} else {
+		// Not logged in
+		res.redirect('accesoAdm')
+	}
 }
 
 exports.vistaAdmin = (req, res)=>{
-    conexion.query('select * from vista_admin', (error, results)=>{
-        if (error) throw error;
-        res.render('admin/vistasAdmin', {vistasAdmin:results});
-    })
+
+    if (req.session.loggedIn) {
+		// Output username
+		//res.render('panelAdmin')
+        console.log("sdgfsdfg");
+        conexion.query('select * from vista_admin', (error, results)=>{
+            if (error) throw error;
+            res.render('admin/vistasAdmin', {vistasAdmin:results});
+        })
+        //console.log(req.route.path)
+        //res.redirect(req.route.path+"/2")
+	} else {
+		// Not logged in
+		res.redirect('accesoAdm')
+	}
+
 }
 
 exports.vistaPersona = (req, res)=>{
-    conexion.query('select * from vista_persona', (error, results)=>{
-        if (error) throw error;
-        res.render('admin/vistasPersona', {vistasPersona:results});
-    })
+    if (req.session.loggedIn) {
+		conexion.query('select * from vista_persona', (error, results)=>{
+            if (error) throw error;
+            res.render('admin/vistasPersona', {vistasPersona:results});
+        })
+	} else {
+		// Not logged in
+		res.redirect('accesoAdm')
+	}
 }
 
 exports.ususarioAdminDrop = (req, res)=>{
-    conexion.query( "SELECT tp_id from tbl_tipo;"+
+    if (req.session.loggedIn) {
+		conexion.query( "SELECT tp_id from tbl_tipo;"+
                     "SELECT a_id, a_cuenta FROM tbl_acceso where act_desact='1';"+
                     "SELECT c_cut, c_descripcion FROM tbl_comuna;"+
                     "SELECT p_cut, descripcion FROM tbl_provincia;" +
@@ -214,6 +237,10 @@ exports.ususarioAdminDrop = (req, res)=>{
         if (err) throw err;
         res.render('admin/usuarioAdmin', {tipo:results[0], acceso:results[1], comuna:results[2], provincia:results[3], region:results[4], pais:results[5], persona:results[6], cursos:results[7], seccion:results[8]});
     });
+	} else {
+		// Not logged in
+		res.redirect('accesoAdm')
+	}
 }
 
 exports.preupdateAdminTipo = (req, res)=>{
@@ -411,11 +438,31 @@ exports.habilitarAcceso = (req, res)=>{
 }
 
 exports.triggersAdmin = (req, res)=>{
-    conexion.query('select * from auditoria_acceso', (error, results)=>{
-        if(error){
-            throw error;
-        } else {
-            res.render('admin/triggersAdmin', {results:results});
-        }
-    });
+    if (req.session.loggedIn) {
+        conexion.query('select * from auditoria_acceso', (error, results)=>{
+            if(error){
+                throw error;
+            } else {
+                res.render('admin/triggersAdmin', {results:results});
+            }
+        });
+	} else {
+		// Not logged in
+		res.redirect('accesoAdm')
+	}
+}
+
+exports.registroAvance = async (req, res)=>{
+    const av_id = req.body.av_id
+    const av_descripcion = req.body.av_descripcion
+    const av_estado = req.body.av_estado
+    const fk_rut = fk_rut
+    if (tp_descripcion) {
+        conexion.query('INSERT INTO tbl_estado SET ?', {av_id:av_id, av_descripcion, av_estado, fk_rut}, function(error, result){
+            if (error) throw error;
+            res.redirect('/')
+        });
+    } else {
+
+    }
 }

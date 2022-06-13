@@ -57,7 +57,8 @@ exports.login = async (req, res)=>{
                     // Authenticate the user
                     req.session.loggedIn = true;
                     req.session.user = user;
-                    req.session.user2 = result[0]
+                    req.session.id = result[0]
+                    req.session.user2 = result[4]
                     //console.log(result[0].a_id)
                     // Redirect to home page
                     res.render('panelPrincipal', {
@@ -99,35 +100,54 @@ exports.protected1 = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
 		// Output username
-        if(!req.session.videos){
-            req.session.videos = 25
-        }else{
-            req.session.videos = req.session.videos + 25
-            if(req.session.videos > 100){
-                req.session.videos = 100
-            }
-        }
-        var videos = req.session.videos
-        
+        var arr = ["","","",""]
+        req.session.video1 = 100 / arr.length;
+        var video1 = req.session.video1
+
+        req.session.video2 = 100 / arr.length;
+        var video2 = req.session.video2 + video1
+
+        req.session.video3 = 100 / arr.length;
+        var video3 = req.session.video3 + video2
+
+        req.session.video4 = 100 / arr.length;
+        var video4 = req.session.video4 + video3
+
 		res.render('contenido1', {
-            videos
+            video1,
+            video2,
+            video3,
+            video4
             //contenido
         })
 	} else {
 		// Not logged in
 		res.redirect('/accesoPrincipal')
 	}
-	res.end();
 }
 
 exports.protected2 = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
-        req.session.contador = req.session.contador ? req.session.contador + 1 : 1;
-        var contador = req.session.contador;
-        console.log(contador)
+        var arr = ["","","",""]
+        req.session.video1 = 100 / arr.length;
+        var video1 = req.session.video1
+
+        req.session.video2 = 100 / arr.length;
+        var video2 = req.session.video2 + video1
+
+        req.session.video3 = 100 / arr.length;
+        var video3 = req.session.video3 + video2
+
+        req.session.video4 = 100 / arr.length;
+        var video4 = req.session.video4 + video3
 		// Output username
-		res.render('contenido2')
+		res.render('contenido2', {
+            video1,
+            video2,
+            video3,
+            video4
+        })
 	} else {
 		// Not logged in
 		res.redirect('/accesoPrincipal')
@@ -138,8 +158,25 @@ exports.protected2 = async (req, res)=>{
 exports.protected3 = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
+        var arr = ["","","",""]
+        req.session.video1 = 100 / arr.length;
+        var video1 = req.session.video1
+
+        req.session.video2 = 100 / arr.length;
+        var video2 = req.session.video2 + video1
+
+        req.session.video3 = 100 / arr.length;
+        var video3 = req.session.video3 + video2
+
+        req.session.video4 = 100 / arr.length;
+        var video4 = req.session.video4 + video3
 		// Output username
-		res.render('contenido3')
+		res.render('contenido3', {
+            video1,
+            video2,
+            video3,
+            video4
+        })
 	} else {
 		// Not logged in
 		res.redirect('/accesoPrincipal')
@@ -150,8 +187,25 @@ exports.protected3 = async (req, res)=>{
 exports.protected4 = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
+        var arr = ["","","",""]
+        req.session.video1 = 100 / arr.length;
+        var video1 = req.session.video1
+
+        req.session.video2 = 100 / arr.length;
+        var video2 = req.session.video2 + video1
+
+        req.session.video3 = 100 / arr.length;
+        var video3 = req.session.video3 + video2
+
+        req.session.video4 = 100 / arr.length;
+        var video4 = req.session.video4 + video3
 		// Output username
-		res.render('contenido4')
+		res.render('contenido4', {
+            video1,
+            video2,
+            video3,
+            video4
+        })
 	} else {
 		// Not logged in
 		res.redirect('/accesoPrincipal')
@@ -162,8 +216,25 @@ exports.protected4 = async (req, res)=>{
 exports.protected5 = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
+        var arr = ["","","",""]
+        req.session.video1 = 100 / arr.length;
+        var video1 = req.session.video1
+
+        req.session.video2 = 100 / arr.length;
+        var video2 = req.session.video2 + video1
+
+        req.session.video3 = 100 / arr.length;
+        var video3 = req.session.video3 + video2
+
+        req.session.video4 = 100 / arr.length;
+        var video4 = req.session.video4 + video3
 		// Output username
-		res.render('contenido5')
+		res.render('contenido5', {
+            video1,
+            video2,
+            video3,
+            video4
+        })
 	} else {
 		// Not logged in
 		res.redirect('/accesoPrincipal')
@@ -174,8 +245,25 @@ exports.protected5 = async (req, res)=>{
 exports.protected6 = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
+        var arr = ["","","",""]
+        req.session.video1 = 100 / arr.length;
+        var video1 = req.session.video1
+
+        req.session.video2 = 100 / arr.length;
+        var video2 = req.session.video2 + video1
+
+        req.session.video3 = 100 / arr.length;
+        var video3 = req.session.video3 + video2
+
+        req.session.video4 = 100 / arr.length;
+        var video4 = req.session.video4 + video3
 		// Output username
-		res.render('contenido6')
+		res.render('contenido6', {
+            video1,
+            video2,
+            video3,
+            video4
+        })
 	} else {
 		// Not logged in
 		res.redirect('/accesoPrincipal')
@@ -186,8 +274,25 @@ exports.protected6 = async (req, res)=>{
 exports.protected7 = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
+        var arr = ["","","",""]
+        req.session.video1 = 100 / arr.length;
+        var video1 = req.session.video1
+
+        req.session.video2 = 100 / arr.length;
+        var video2 = req.session.video2 + video1
+
+        req.session.video3 = 100 / arr.length;
+        var video3 = req.session.video3 + video2
+
+        req.session.video4 = 100 / arr.length;
+        var video4 = req.session.video4 + video3
 		// Output username
-		res.render('contenido7')
+		res.render('contenido7',{
+            video1,
+            video2,
+            video3,
+            video4
+        })
 	} else {
 		// Not logged in
 		res.redirect('/accesoPrincipal')
