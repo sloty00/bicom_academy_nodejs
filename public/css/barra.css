@@ -1,0 +1,45 @@
+.inicio{width: 0%;}
+
+.contenido_1{width: 14%;}
+.contenido_2{width: 28%;}
+.contenido_3{width: 42%;}
+.contenido_4{width: 56%;}
+.contenido_5{width: 70%;}
+.contenido_6{width: 84%;}
+.contenido_7{width: 100%;}
+
+.video_1_1_{ width: 25%;}
+.video_1_2_{width: 50%;}
+.video_1_3_{width: 75%;}
+.video_1_4_{width: 100%;}
+
+.video_2_1_{ width: 25%;}
+.video_2_2_{width: 50%;}
+.video_2_3_{width: 75%;}
+.video_2_4_{width: 100%;}
+
+.video_3_1_{ width: 25%;}
+.video_3_2_{width: 50%;}
+.video_3_3_{width: 75%;}
+.video_3_4_{width: 100%;}
+
+.video_4_1_{ width: 25%;}
+.video_4_2_{width: 50%;}
+.video_4_3_{width: 75%;}
+.video_4_4_{width: 100%;}
+
+.video_5_1_{ width: 25%;}
+.video_5_2_{width: 50%;}
+.video_5_3_{width: 75%;}
+.video_5_4_{width: 100%;}
+
+.video_6_1_{ width: 25%;}
+.video_6_2_{width: 50%;}
+.video_6_3_{width: 75%;}
+.video_6_4_{width: 100%;}
+
+.video_7_1_{ width: 25%;}
+.video_7_2_{width: 50%;}
+.video_7_3_{width: 75%;}
+.video_7_4_{width: 100%;}
+.animacion{transition: all 2s, ease .5s;}

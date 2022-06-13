@@ -1,99 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Bicom Academy</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- Custom fonts for this template-->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-    <style type="text/css">
-        .internalbox {
-            width: 100%;
-            height: 100%;
-        }
-
-        .containerbox {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-    </style>
-
-    <style type="text/css">
-        .inicio{width: 0%;}
-
-        .contenido_1{width: 14%;}
-        .contenido_2{width: 28%;}
-        .contenido_3{width: 42%;}
-        .contenido_4{width: 56%;}
-        .contenido_5{width: 70%;}
-        .contenido_6{width: 84%;}
-        .contenido_7{width: 100%;}
-
-        .video_1_1_{ width: 25%;}
-        .video_1_2_{width: 50%;}
-        .video_1_3_{width: 75%;}
-        .video_1_4_{width: 100%;}
-
-        .video_2_1_{ width: 25%;}
-        .video_2_2_{width: 50%;}
-        .video_2_3_{width: 75%;}
-        .video_2_4_{width: 100%;}
-
-        .video_3_1_{ width: 25%;}
-        .video_3_2_{width: 50%;}
-        .video_3_3_{width: 75%;}
-        .video_3_4_{width: 100%;}
-
-        .video_4_1_{ width: 25%;}
-        .video_4_2_{width: 50%;}
-        .video_4_3_{width: 75%;}
-        .video_4_4_{width: 100%;}
-
-        .video_5_1_{ width: 25%;}
-        .video_5_2_{width: 50%;}
-        .video_5_3_{width: 75%;}
-        .video_5_4_{width: 100%;}
-
-        .video_6_1_{ width: 25%;}
-        .video_6_2_{width: 50%;}
-        .video_6_3_{width: 75%;}
-        .video_6_4_{width: 100%;}
-
-        .video_7_1_{ width: 25%;}
-        .video_7_2_{width: 50%;}
-        .video_7_3_{width: 75%;}
-        .video_7_4_{width: 100%;}
-        .animacion{transition: all 2s, ease .5s;}
-    </style>
-
-
-    <style type="text/css">
-        .center_content {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 55%;
-        }
-    </style>
-
-</head>
+<%- include('templates/header') %>
 
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -107,120 +15,7 @@
         </nav>
     </header>
     <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-light sidebar sidebar-light accordion" id="accordionSidebar">
-        </br>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-fw fa-home"></i>
-                    <span>Bicom Academy</span></a>
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#vistas"
-                    aria-expanded="true" aria-controls="vistas">
-                    <i class="fas fa-fw fa-school"></i>
-                    <span>
-                        Contenido
-                        <div class="progress">
-                            <div id="barra_general" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </span>
-                </a>
-                <div id="vistas" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="contenido1">
-                            Contenido 1. <br/>
-                            <div class="progress">
-                                <div id="barra_especifica1" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><p class="porcentaje1"></p></div>
-                            </div>
-                        </a>
-                        <a class="collapse-item" href="contenido2">
-                            Contenido 2. <br/>
-                            <div class="progress">
-                                <div id="barra_especifica2" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </a>
-                        <a class="collapse-item" href="contenido3">
-                            Contenido 3. <br/>
-                            <div class="progress">
-                                <div id="barra_especifica3" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </a>
-                        <a class="collapse-item" href="contenido4">
-                            Contenido 4. <br/>
-                            <div class="progress">
-                                <div id="barra_especifica4" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </a>
-                        <a class="collapse-item" href="contenido5">
-                            Contenido 5. <br/>
-                            <div class="progress">
-                                <div id="barra_especifica5" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </a>
-                        <a class="collapse-item" href="contenido6">
-                            Contenido 6. <br/>
-                            <div class="progress">
-                                <div id="barra_especifica6" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </a>
-                        <a class="collapse-item" href="contenido7">
-                            Contenido 7. <br/>
-                            <div class="progress">
-                                <div id="barra_especifica7" class="progress-bar progess-bar-stripped inicio animacion" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#mantenedores"
-                    aria-expanded="true" aria-controls="mantenedores">
-                    <i class="fas fa-fw fa-clipboard"></i>
-                    <span>Calificaciones</span>
-                </a>
-                <div id="mantenedores" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Notas Periodo</a>
-                        <a class="collapse-item" href="#">Promedio General</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuentasusuario"
-                    aria-expanded="true" aria-controls="cuentasusuario">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Cuentas de usuario</span>
-                </a>
-                <div id="cuentasusuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="accesoPrincipal">Perfil de Usuario</a>
-                        <a class="collapse-item" href="#">Completar Perfil</a>
-                        <a class="collapse-item" href="#">Generar Certificado</a>
-                        <a class="collapse-item" href="logout">Desconectarse</a>
-                    </div>
-                </div>
-            </li>
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
+        <%- include('templates/siderbars') %>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -319,7 +114,7 @@
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <div class="modal-footer">
-                                  <button id="video_6_1" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button id="video_6_1" type="button" class="btn btn-secondary btn_porcentage" porcentage="25" data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
@@ -338,7 +133,7 @@
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <div class="modal-footer">
-                                  <button id="video_6_2" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button id="video_6_2" type="button" class="btn btn-secondary btn_porcentage" porcentage="50" data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
@@ -357,7 +152,7 @@
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <div class="modal-footer">
-                                  <button id="video_6_3" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button id="video_6_3" type="button" class="btn btn-secondary btn_porcentage" porcentage="75" data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
@@ -376,69 +171,122 @@
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <div class="modal-footer">
-                                  <button id="video_6_4" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button id="video_6_4" type="button" class="btn btn-secondary btn_porcentage" porcentage="100" data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
                         </div>
                         <div style="padding-left:27em; padding-top: 3em;">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Prueba Contenido 6</button>
+                            <button id="btnprueba" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal_prueba">Prueba Contenido 1</button>
                         </div>
                         <!-- Large modal -->
-                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal fade modal_prueba" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Prueba Contenido 6</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Theme: Animals</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="row g-3 needs-validation" novalidate>
-                                            <div>
-                                            <h5>Desarrollo</h5>
-                                            <p>1.- Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                                <label for="desarrollo1" class="form-label">Respuesta 1:</label>
-                                                <textarea class="form-control" id="validationCustom01" value="Mark" rows="3" required></textarea>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div style="padding-top: 2em;">
-                                            <h5>Opciones Multiples</h5>
-                                            <p>2.- Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                        <form>
+                                            <div style="padding-top: 1em;">
+                                            <h5>Multiples Choice</h5>
+                                            <p>1.- WHAT ANIMAL MOO.</p>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                                <input class="form-check-input" type="checkbox" name="pregunta1" id="p11" value="option1">
                                                 <label class="form-check-label" for="inlineCheckbox1">1. Cow</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                                <input class="form-check-input" type="checkbox" name="pregunta1" id="p12" value="option2">
                                                 <label class="form-check-label" for="inlineCheckbox2">2. Chicken</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                                <label class="form-check-label" for="inlineCheckbox3">3. Horse</label>
+                                                <input class="form-check-input" type="checkbox" name="pregunta1" id="p13" value="option3">
+                                                <label class="form-check-label" for="inlineCheckbox3">3. Cat</label>
                                             </div>
+                                            <p>2.- WHAT ANIMAL MEOW.</p>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta2" id="p21" value="option1">
+                                                <label class="form-check-label" for="p21">1. Cow</label>
                                             </div>
-                                            <div style="padding-top: 2em;">
-                                            <h5>Verdadero y falso</h5>
-                                            <p>3.- Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                True
-                                                </label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta2" id="p22" value="option2">
+                                                <label class="form-check-label" for="p22">2. Goose</label>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                <label class="form-check-label" for="flexRadioDefault2">
-                                                False
-                                                </label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta2" id="p23" value="option3">
+                                                <label class="form-check-label" for="p23">3. Cat</label>
+                                            </div>
+                                            <p>3.- WHAT ANIMAL CAW.</p>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta3" id="p31" value="option1">
+                                                <label class="form-check-label" for="p31">1. Cow</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta3" id="p32" value="option2">
+                                                <label class="form-check-label" for="p32">2. Goose</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta3" id="p33" value="option3">
+                                                <label class="form-check-label" for="p33">3. Cat</label>
+                                            </div>
+                                            <p>4.- WHAT ANIMAL TALK.</p>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta4" id="p41" value="option1">
+                                                <label class="form-check-label" for="p41">1. Cow</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta4" id="p42" value="option2">
+                                                <label class="form-check-label" for="p42">2. Goose</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta4" id="p43" value="option3">
+                                                <label class="form-check-label" for="p43">3. Human</label>
+                                            </div>
+                                            <p>5.- WHAT ANIMAL TRINE.</p>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta5" id="p51" value="option1">
+                                                <label class="form-check-label" for="p51">1. Thrush</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta5" id="p52" value="option2">
+                                                <label class="form-check-label" for="p52">2. Goose</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta5" id="p53" value="option3">
+                                                <label class="form-check-label" for="p53">3. Human</label>
+                                            </div>
+                                            <p>6.- WHAT ANIMAL RED CHEST.</p>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta6" id="p61" value="option1">
+                                                <label class="form-check-label" for="p61">1. Thrush</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta6" id="p62" value="option2">
+                                                <label class="form-check-label" for="p62">2. Goose</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta6" id="p63" value="option3">
+                                                <label class="form-check-label" for="p63">3. Lloica</label>
+                                            </div>
+                                            <p>7.- WHAT ANIMAL TO FISH.</p>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta7" id="p71" value="option1">
+                                                <label class="form-check-label" for="p71">1. KINGFISHER</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta7" id="p72" value="option2">
+                                                <label class="form-check-label" for="p72">2. Goose</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="pregunta7" id="p73" value="option3">
+                                                <label class="form-check-label" for="p73">3. Lloica</label>
                                             </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button class="btn btn-primary" type="submit">Terminar Prueba</button>
+                                                <input type="button" class="btn btn-primary" data-dismiss="modal" value=" Resultado" onclick="resultado()"/>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                         </form>
@@ -454,17 +302,8 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Bicom 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
+            <%- include('templates/footer') %>
+        </div>
     </div>
     <!-- End of Content Wrapper -->
 
@@ -499,188 +338,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"></script>
     <script>
-        function _video_1_1(){
-            document.getElementById("barra_especifica1").classList.toggle ("video_1_1_");
-        }
-        document.getElementById("video_1_1").onclick = function() {
-            _video_1_1();
-        }
-        function _video_1_2(){
-            document.getElementById("barra_especifica1").classList.toggle ("video_1_2_");
-        }
-        document.getElementById("video_1_2").onclick = function() {
-            _video_1_2();
-        }
-        function _video_1_3(){
-            document.getElementById("barra_especifica1").classList.toggle ("video_1_3_");
-        }
-        document.getElementById("video_1_3").onclick = function() {
-            _video_1_3();
-        }
-        function _video_1_4(){
-        document.getElementById("barra_especifica1").classList.toggle ("video_1_4_");
-        document.getElementById("barra_general").classList.toggle ("contenido_1");
-        }
-            document.getElementById("video_1_4").onclick = function() {
-                _video_1_4();
-        }
+            $(".btn_porcentage").on("click", function(){
+              if($("#barra_especifica6").width() == 0){
+                $('#barra_especifica6').css('width', $(this).attr('porcentage')+'%')
+              } else {
+              const barra = $("#barra_especifica6").width() / $('#barra_especifica6').parent().width() * 100;
+              if(barra< $(this).attr('porcentage')){
+              $('#barra_especifica6').css('width', $(this).attr('porcentage')+'%')
+              }
+            }
+            $('#barra_especifica6').text($(this).attr('porcentage')+'%');
+            })
 
-        function _video_2_1(){
-            document.getElementById("barra_especifica2").classList.toggle ("video_2_1_");
-        }
-        document.getElementById("video_2_1").onclick = function() {
-            _video_2_1();
-        }
-        function _video_2_2(){
-            document.getElementById("barra_especifica2").classList.toggle ("video_2_2_");
-        }
-        document.getElementById("video_2_2").onclick = function() {
-            _video_2_2();
-        }
-        function _video_2_3(){
-            document.getElementById("barra_especifica2").classList.toggle ("video_2_3_");
-        }
-        document.getElementById("video_2_3").onclick = function() {
-            _video_2_3();
-        }
-        function _video_2_4(){
-        document.getElementById("barra_especifica2").classList.toggle ("video_2_4_");
-        document.getElementById("barra_general").classList.toggle ("contenido_2");
-        }
-            document.getElementById("video_2_4").onclick = function() {
-                _video_2_4();
-        }
-
-        function _video_3_1(){
-            document.getElementById("barra_especifica3").classList.toggle ("video_3_1_");
-        }
-        document.getElementById("video_3_1").onclick = function() {
-            _video_3_1();
-        }
-        function _video_3_2(){
-            document.getElementById("barra_especifica3").classList.toggle ("video_3_2_");
-        }
-        document.getElementById("video_3_2").onclick = function() {
-            _video_3_2();
-        }
-        function _video_3_3(){
-            document.getElementById("barra_especifica3").classList.toggle ("video_3_3_");
-        }
-        document.getElementById("video_3_3").onclick = function() {
-            _video_3_3();
-        }
-        function _video_3_4(){
-        document.getElementById("barra_especifica3").classList.toggle ("video_3_4_");
-        document.getElementById("barra_general").classList.toggle ("contenido_3");
-        }
-            document.getElementById("video_3_4").onclick = function() {
-                _video_3_4();
-        }
-
-        function _video_4_1(){
-            document.getElementById("barra_especifica4").classList.toggle ("video_4_1_");
-        }
-        document.getElementById("video_4_1").onclick = function() {
-            _video_4_1();
-        }
-        function _video_4_2(){
-            document.getElementById("barra_especifica4").classList.toggle ("video_4_2_");
-        }
-        document.getElementById("video_4_2").onclick = function() {
-            _video_4_2();
-        }
-        function _video_4_3(){
-            document.getElementById("barra_especifica4").classList.toggle ("video_4_3_");
-        }
-        document.getElementById("video_4_3").onclick = function() {
-            _video_4_3();
-        }
-        function _video_4_4(){
-        document.getElementById("barra_especifica4").classList.toggle ("video_4_4_");
-        document.getElementById("barra_general").classList.toggle ("contenido_4");
-        }
-            document.getElementById("video_4_4").onclick = function() {
-                _video_4_4();
-        }
-
-        function _video_5_1(){
-            document.getElementById("barra_especifica5").classList.toggle ("video_5_1_");
-        }
-        document.getElementById("video_5_1").onclick = function() {
-            _video_5_1();
-        }
-        function _video_5_2(){
-            document.getElementById("barra_especifica5").classList.toggle ("video_5_2_");
-        }
-        document.getElementById("video_5_2").onclick = function() {
-            _video_5_2();
-        }
-        function _video_5_3(){
-            document.getElementById("barra_especifica5").classList.toggle ("video_5_3_");
-        }
-        document.getElementById("video_5_3").onclick = function() {
-            _video_5_3();
-        }
-        function _video_5_4(){
-        document.getElementById("barra_especifica5").classList.toggle ("video_5_4_");
-        document.getElementById("barra_general").classList.toggle ("contenido_5");
-        }
-            document.getElementById("video_5_4").onclick = function() {
-                _video_5_4();
-        }
-
-        function _video_6_1(){
-            document.getElementById("barra_especifica6").classList.toggle ("video_6_1_");
-        }
-        document.getElementById("video_6_1").onclick = function() {
-            _video_6_1();
-        }
-        function _video_6_2(){
-            document.getElementById("barra_especifica6").classList.toggle ("video_6_2_");
-        }
-        document.getElementById("video_6_2").onclick = function() {
-            _video_6_2();
-        }
-        function _video_6_3(){
-            document.getElementById("barra_especifica6").classList.toggle ("video_6_3_");
-        }
-        document.getElementById("video_6_3").onclick = function() {
-            _video_6_3();
-        }
-        function _video_6_4(){
-        document.getElementById("barra_especifica6").classList.toggle ("video_6_4_");
-        document.getElementById("barra_general").classList.toggle ("contenido_6");
-        }
-            document.getElementById("video_6_4").onclick = function() {
-                _video_6_4();
-        }
-
-        function _video_7_1(){
-            document.getElementById("barra_especifica7").classList.toggle ("video_7_1_");
-        }
-        document.getElementById("video_7_1").onclick = function() {
-            _video_7_1();
-        }
-        function _video_7_2(){
-            document.getElementById("barra_especifica7").classList.toggle ("video_7_2_");
-        }
-        document.getElementById("video_7_2").onclick = function() {
-            _video_7_2();
-        }
-        function _video_7_3(){
-            document.getElementById("barra_especifica7").classList.toggle ("video_7_3_");
-        }
-        document.getElementById("video_7_3").onclick = function() {
-            _video_7_3();
-        }
-        function _video_7_4(){
-        document.getElementById("barra_especifica7").classList.toggle ("video_7_4_");
-        document.getElementById("barra_general").classList.toggle ("contenido_7");
-        }
-            document.getElementById("video_7_4").onclick = function() {
-                _video_7_4();
-        }
     </script>
+        <script>
+            function resultado() {
+              var p1, p2, p3, p4, p5, p6, p7, nota;
+              //<!-- 1ª pregunta -->
+              if (document.getElementById('p11').checked==true) {p1=7}
+              else {p1=1}
+              //<!-- 2ª pregunta -->
+              if (document.getElementById('p23').checked==true) {p2=7}
+              else {p2=1}
+              //<!-- 3ª pregunta -->
+              if (document.getElementById('p32').checked==true) {p3=7}
+              else {p3=1}
+              //<!-- 4ª pregunta -->
+              if (document.getElementById('p43').checked==true) {p4=7}
+              else {p4=1}
+              //<!-- 4ª pregunta -->
+              if (document.getElementById('p51').checked==true) {p5=7}
+              else {p5=1}
+              //<!-- 4ª pregunta -->
+              if (document.getElementById('p63').checked==true) {p6=7}
+              else {p6=1}
+              //<!-- 4ª pregunta -->
+              if (document.getElementById('p71').checked==true) {p7=7}
+              else {p7=1}
+              nota=(p1+p2+p3+p4+p5+p6+p7)/7;
+              var puntodecimal = nota.toFixed(1);
+              alert(" Nota: " + puntodecimal);
+      
+              const btnprueba = document.getElementById('btnprueba');
+              btnprueba.disabled = true;
+              $(".modal_prueba").modal('dispose');
+            }
+          </script>
 
 </body>
 </html>

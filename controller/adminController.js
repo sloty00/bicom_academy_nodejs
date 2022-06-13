@@ -1,5 +1,5 @@
-const { query } = require('express')
 const conexion = require('../database/db')
+const { vistaAdmin } = require('./cursoController')
 
 exports.registroAdmin = async (req, res)=>{
     try {

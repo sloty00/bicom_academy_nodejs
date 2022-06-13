@@ -1,3 +1,4 @@
+
 const contenido1 = (req, res) =>{
     res.render('contenido1');
 }
@@ -26,16 +27,6 @@ const contenido7 = (req, res) =>{
     res.render('contenido7');
 }
 
-const prueba = (req, res) =>{
-    res.render('prueba');
-}
-
-const prueba1 = (req, res) =>{
-    res.render('prueba1');
-}
-
-
-
 module.exports = {
     contenido1,
     contenido2,
@@ -44,6 +35,4 @@ module.exports = {
     contenido5,
     contenido6,
     contenido7,
-    prueba,
-    prueba1
 }

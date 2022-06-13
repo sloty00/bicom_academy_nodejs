@@ -1,4 +1,6 @@
 //--------------------------Panel Administracion-----------------------------//
+const { protectedAdmin } = require("../controller/adminController")
+const { vistaAdmin } = require("../controller/cursoController")
 
 const panelAdmin = (req, res) =>{
     res.render('admin/panelAdmin')

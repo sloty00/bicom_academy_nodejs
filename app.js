@@ -1,10 +1,12 @@
 const express  = require('express');
-const session = require('express-session')
+const session = require('express-session');
+const cookieParser = require("cookie-parser");
 const path = require('path');
 const dotenv =  require('dotenv');
 const loggerHTTP =  require('morgan');
 
 const app = express();
+app.use(cookieParser());
 var fs = require('fs'); var util = require('util');
 const { set } = require('express/lib/application');
 var log_file = fs.createWriteStream(__dirname + '/public/node.log', {flags : 'a'});
@@ -20,11 +22,11 @@ app.use(express.static(path.join(__dirname, 'views')));
 //para poder trabajar con cookies
 //app.use(cookieParser())
 app.use(session({
-	secret: 'secret',
+	secret: 'secretBicom',
 	resave: true,
 	saveUninitialized: true
 }));
-//para procesar datos enviados desde forms
+//para procesar datos enviados y recibidos desde forms
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
@@ -45,10 +47,13 @@ app.use(function (err, req, res, next) {
 	res.render('error');
 });
 
+
 //Llamar al router
 app.use('/', require('./routes/router'));
 
-
+app.use((req, res, next)=>{
+	res.status(404).render("404")
+});
 
 app.listen(3000, ()=>{
     console.log('SERVER UP running in http://localhost:3000');
