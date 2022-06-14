@@ -49,7 +49,7 @@ exports.login = async (req, res)=>{
 
         if (user && pass) {
             // Execute SQL query that'll select the account from the database based on the specified username and password
-            conexion.query('SELECT * FROM tbl_acceso WHERE a_cuenta = ? AND a_password = ? AND fk_tipo=2', [user, pass], function(error, result) {
+            conexion.query('SELECT a_id, a_cuenta, a_password, p_rut FROM tbl_acceso INNER JOIN tbl_persona ON tbl_acceso.a_id = tbl_persona.fk_acceso WHERE a_cuenta = ? AND a_password = ? AND fk_tipo=2', [user, pass], function(error, result) {
                 // If there is an issue with the query, output the error
                 if (error) throw error;
                 // If the account exists
@@ -57,14 +57,14 @@ exports.login = async (req, res)=>{
                     // Authenticate the user
                     req.session.loggedIn = true;
                     req.session.user = user;
-                    req.session.id = result[0]
-                    req.session.user2 = result[4]
-                    //console.log(result[0].a_id)
+                    req.session.a_id = result[0].a_id
                     // Redirect to home page
                     res.render('panelPrincipal', {
-                        user: req.session.user2
+                        Id: req.session.a_id
                     })
-                    console.log(req.body)
+                    req.session.save(function(err) {
+                        req.session.a_id
+                    })
                 } else {
                     res.render('accesoPrincipal', {
                         message: 'Datos Incorrectos'
@@ -76,6 +76,7 @@ exports.login = async (req, res)=>{
                 message: 'Rellene sus datos'
             })
         }
+        return user
     } catch (error) {
         console.log(error);
     }
@@ -86,7 +87,7 @@ exports.protected = async (req, res)=>{
 	if (req.session.loggedIn) {
 		// Output username
         req.session.contador = req.session.contador ? req.session.contador + 1 : 1;
-        console.log(req.session.contador)
+        console.log("rut: "+req.session.a_id)
 		res.render('panelPrincipal')
         
 	} else {
@@ -113,7 +114,10 @@ exports.protected1 = async (req, res)=>{
         req.session.video4 = 100 / arr.length;
         var video4 = req.session.video4 + video3
 
+        var a_id = req.session.a_id
+
 		res.render('contenido1', {
+            a_id,
             video1,
             video2,
             video3,

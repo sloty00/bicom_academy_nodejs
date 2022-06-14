@@ -46,13 +46,13 @@ exports.accesoAdmin = async (req, res)=>{
                     res.render('admin/panelAdmin')
                     console.log(user);
                 } else {
-                    res.render('admin/accesoAdm',{
+                    res.render('admin/accesoAdmin',{
                         message: 'Datos Incorrectos'
                     })
                 }		
             });
         } else {
-            res.render('admin/accesoAdm',{
+            res.render('admin/accesoAdmin',{
                 message: 'Rellene sus Datos'
             })
         }
@@ -65,10 +65,10 @@ exports.protectedAdmin = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
 		// Output username
-		res.render('panelAdmin')
+		res.render('admin/panelAdmin')
 	} else {
 		// Not logged in
-		res.redirect('accesoAdm')
+		res.render('admin/accesoAdmin')
 	}
 	res.end();
 }
@@ -77,10 +77,10 @@ exports.protectedReg = async (req, res)=>{
     // If the user is loggedin
 	if (req.session.loggedIn) {
 		// Output username
-		res.render('registroAdm')
+		res.render('admin/registroAdmin')
 	} else {
 		// Not logged in
-		res.redirect('accesoAdm')
+		res.redirect('admin/accesoAdmin')
 	}
 	res.end();
 }

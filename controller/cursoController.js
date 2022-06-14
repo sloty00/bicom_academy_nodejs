@@ -75,7 +75,7 @@ exports.registroMantenedor = async (req, res)=>{
 
     }
     const p_rut = req.body.p_rut;
-    const fk_id = req.body.fk_id
+    const fk_acceso = req.body.fk_acceso
     const p_nombre = req.body.p_nombre
     const p_apellidos = req.body.p_apellidos
     const fk_comuna = req.body.fk_comuna
@@ -83,7 +83,7 @@ exports.registroMantenedor = async (req, res)=>{
     const p_telefono = req.body.p_telefono
     const p_email = req.body.p_email
     if(p_rut && p_nombre && p_apellidos && p_direccion && p_telefono && p_email) {
-        conexion.query('INSERT INTO tbl_persona SET ?', {p_rut:p_rut,fk_id:fk_id, p_nombre:p_nombre, p_apellidos:p_apellidos, fk_comuna:fk_comuna, p_direccion:p_direccion, p_telefono:p_telefono, p_email:p_email}, function(error, result){
+        conexion.query('INSERT INTO tbl_persona SET ?', {p_rut:p_rut,fk_acceso:fk_acceso, p_nombre:p_nombre, p_apellidos:p_apellidos, fk_comuna:fk_comuna, p_direccion:p_direccion, p_telefono:p_telefono, p_email:p_email}, function(error, result){
             if (error) throw error;
             res.redirect('/usuarioAdmin')
     });
@@ -348,14 +348,14 @@ exports.editAdminAdmin = (req, res)=>{
 
 exports.editAdminPerfil = (req, res)=>{
     const p_rut = req.body.p_rut;
-    const fk_id = req.body.fk_id;
+    const fk_acceso = req.body.fk_acceso;
     const p_nombre = req.body.p_nombre;
     const p_apellidos = req.body.p_apellidos;
     const fk_comuna = req.body.fk_comuna;
     const p_direccion = req.body.p_direccion;
     const p_telefono = req.body.p_telefono;
     const p_email = req.body.p_email;
-    conexion.query("UPDATE tbl_persona SET ? WHERE p_rut=?", [{p_rut:p_rut, fk_id:fk_id, p_nombre:p_nombre, p_apellidos:p_apellidos, fk_comuna:fk_comuna, p_direccion:p_direccion, p_telefono:p_telefono, p_email:p_email}, p_rut], (error, result)=>{
+    conexion.query("UPDATE tbl_persona SET ? WHERE p_rut=?", [{p_rut:p_rut, fk_acceso:fk_acceso, p_nombre:p_nombre, p_apellidos:p_apellidos, fk_comuna:fk_comuna, p_direccion:p_direccion, p_telefono:p_telefono, p_email:p_email}, p_rut], (error, result)=>{
         if(error){
             throw error;
         }else{
@@ -453,16 +453,43 @@ exports.triggersAdmin = (req, res)=>{
 }
 
 exports.registroAvance = async (req, res)=>{
-    const av_id = req.body.av_id
     const av_descripcion = req.body.av_descripcion
     const av_estado = req.body.av_estado
-    const fk_rut = fk_rut
-    if (tp_descripcion) {
-        conexion.query('INSERT INTO tbl_estado SET ?', {av_id:av_id, av_descripcion, av_estado, fk_rut}, function(error, result){
+    const fk_acceso = req.body.fk_acceso
+    const fk_contenido = req.body.fk_contenido
+    if (av_descripcion) {
+        conexion.query('INSERT INTO tbl_estado SET ?', {av_descripcion, av_estado, fk_acceso, fk_contenido}, function(error, result){
             if (error) throw error;
-            res.redirect('/')
+            res.redirect('/contenido1')
         });
     } else {
 
     }
+}
+
+exports.vistaAvance = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query('SELECT * FROM `tbl_multimedios` WHERE fk_contenido = 1;' + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 1;", [1, 2], function(err, results) {
+            if (err) throw err;
+
+            var arr = results[0];
+            req.session.mul_count = 100/arr.length;
+            var a_id = req.session.a_id
+            var video1 = req.session.mul_count
+            
+            req.session.av_estado = results[1][0].av_estado;
+            console.log(req.session.av_estado)
+            
+            res.render('contenido1', {
+                a_id,
+                video1
+                //contadorA:results[0], multimedios:results[1]
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }
+
 }

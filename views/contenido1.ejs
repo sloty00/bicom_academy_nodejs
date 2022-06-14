@@ -11,7 +11,7 @@
             <a class="navbar-brand" href="#" style="padding-left:0.5em">
                 <img src="img_bicom/planillas/64x64.jpg" width="50" height="50" alt="">
             </a>
-            <h3 style="padding-right:33em; color: white;">Contenido 1</h3>
+            <h3 style="padding-right:33em; color: rgb(255, 255, 255);">Contenido 1</h3>
         </nav>
     </header>
     <div id="wrapper">
@@ -113,9 +113,16 @@
                                 <div class="modal-body">
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
+                                <form id="FormAv1" class="tipo" action="/contenido1" method="POST">
+                                <input type="text" class="form-control" id="av_descripcion" name="av_descripcion" value="video_1_1" hidden>
+                                <input type="text" class="form-control" id="av_estado" name="av_estado" value='<%= video1 %>' hidden>
+                                <input type="text" class="form-control" id="fk_acceso" name="fk_acceso" value='<%= a_id %>' hidden>
+                                <input type="text" class="form-control" id="fk_acceso" name="fk_contenido" value='1' hidden>
                                 <div class="modal-footer">
-                                  <button id="video_1_1" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='<%= video1 %>' data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Guardar</button>
+                                  <button type="submit" id="video_1_1" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='<%= video1 %>' data-dismiss="modal">Close</button>
                                 </div>
+                              </form>
                               </div>
                             </div>
                         </div>
@@ -133,7 +140,7 @@
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <div class="modal-footer">
-                                  <button id="video_1_2" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='<%= video2%>' data-dismiss="modal">Close</button>
+                                  <button id="video_1_2" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='' data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
@@ -152,7 +159,7 @@
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <div class="modal-footer">
-                                  <button id="video_1_3" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='<%= video3 %>' data-dismiss="modal">Close</button>
+                                  <button id="video_1_3" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='' data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
@@ -171,7 +178,7 @@
                                     <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <div class="modal-footer">
-                                  <button id="video_1_4" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='<%= video4 %>' data-dismiss="modal">Close</button>
+                                  <button id="video_1_4" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='' data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
@@ -338,6 +345,7 @@
               }
             }
             $('#barra_especifica1').text($(this).attr('porcentaje')+'%');
+            $("#FormAv1").submit(); // Submit the form
             })
 
             $(".btn_examen").on("click", function(){
