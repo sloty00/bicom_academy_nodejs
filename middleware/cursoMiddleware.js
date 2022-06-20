@@ -27,6 +27,10 @@ const contenido7 = (req, res) =>{
     res.render('contenido7');
 }
 
+const calificaciones = (req, res) =>{
+    res.render('calificaciones');
+}
+
 module.exports = {
     contenido1,
     contenido2,
@@ -35,4 +39,5 @@ module.exports = {
     contenido5,
     contenido6,
     contenido7,
+    calificaciones,
 }

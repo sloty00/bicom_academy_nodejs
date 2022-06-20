@@ -453,43 +453,335 @@ exports.triggersAdmin = (req, res)=>{
 }
 
 exports.registroAvance = async (req, res)=>{
-    const av_descripcion = req.body.av_descripcion
-    const av_estado = req.body.av_estado
-    const fk_acceso = req.body.fk_acceso
-    const fk_contenido = req.body.fk_contenido
-    if (av_descripcion) {
-        conexion.query('INSERT INTO tbl_estado SET ?', {av_descripcion, av_estado, fk_acceso, fk_contenido}, function(error, result){
-            if (error) throw error;
-            res.redirect('/contenido1')
-        });
+    if (req.session.loggedIn) {
+        const av_descripcion = req.body.av_descripcion
+        const av_estado = req.body.av_estado
+        const fk_acceso = req.session.a_id
+        const fk_contenido = req.body.fk_contenido
+        if (av_descripcion) {
+            conexion.query('INSERT INTO tbl_estado SET ?', {av_descripcion, av_estado, fk_acceso, fk_contenido}, function(error, result){
+                if (error) throw error;
+                res.redirect('/contenido1')
+                
+            });
+        } else {
+            res.redirect('/rtert')
+        }
     } else {
-
-    }
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }  
 }
 
-exports.vistaAvance = async (req, res)=>{
+exports.vistaContenido1 = async (req, res)=>{
     if (req.session.loggedIn) {
-		conexion.query('SELECT * FROM `tbl_multimedios` WHERE fk_contenido = 1;' + 
-                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 1;", [1, 2], function(err, results) {
+		conexion.query("SELECT mul_id AS m_id FROM `tbl_multimedios` WHERE fk_contenido = 1 AND fk_seccion = 2;" + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 1;"+
+                    "SELECT cu_id, cu_descripcion, con_encabezado, con_descripcion FROM tbl_acceso RIGHT JOIN tbl_cursos ON tbl_acceso.a_id = tbl_cursos.fk_acceso LEFT JOIN tbl_contenidos ON tbl_cursos.cu_id = tbl_contenidos.fk_cursos WHERE tbl_cursos.fk_acceso =" + req.session.a_id + " AND tbl_contenidos.fk_cursos= 2 AND fk_seccion = 2 AND con_estado = 1;"+
+                    "SELECT mul_id, mul_encabezado, mul_descripcion, mul_images, mul_URL, mul_fecha FROM `tbl_multimedios` WHERE mul_estado = 1 AND fk_contenido = 1 AND fk_seccion = 2;", [1, 2, 3, 4], function(err, results) {
             if (err) throw err;
+            var a_id = req.session.a_id
+            var mul_id = 0
 
             var arr = results[0];
-            req.session.mul_count = 100/arr.length;
-            var a_id = req.session.a_id
-            var video1 = req.session.mul_count
-            
-            req.session.av_estado = results[1][0].av_estado;
-            console.log(req.session.av_estado)
-            
+            var count = arr.length
+            var videos = 100/count
+            var videos_vistos = 1
+
+            if (!mul_id){
+                console.log(videos_vistos*videos)
+            } else {
+                console.log("Video ya visto");
+            }
+
             res.render('contenido1', {
                 a_id,
-                video1
-                //contadorA:results[0], multimedios:results[1]
+                titulos1:results[3],
+                contenido1:results[2][0],
+                multimedios:results[3],
+                mlength:results[0]
+
             });
         });
     } else {
         // Not logged in
         res.redirect('/accesoPrincipal')
     }
+}
+
+exports.vistaContenido2 = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query("SELECT mul_id AS m_id, mul_encabezado FROM `tbl_multimedios` WHERE fk_contenido = 2 AND fk_seccion = 2;" + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 2;"+
+                    "SELECT cu_id, cu_descripcion, con_encabezado, con_descripcion FROM tbl_acceso RIGHT JOIN tbl_cursos ON tbl_acceso.a_id = tbl_cursos.fk_acceso LEFT JOIN tbl_contenidos ON tbl_cursos.cu_id = tbl_contenidos.fk_cursos WHERE tbl_cursos.fk_acceso =" + req.session.a_id + " AND tbl_contenidos.fk_cursos= 2 AND fk_seccion = 2 AND con_estado = 1;"+
+                    "SELECT mul_id, mul_encabezado, mul_descripcion, mul_images, mul_URL, mul_fecha FROM `tbl_multimedios` WHERE mul_estado = 1 AND fk_contenido = 2 AND fk_seccion = 2;", [1, 2, 3, 4], function(err, results) {
+            if (err) throw err;
+                var a_id = req.session.a_id
+            
+                var mul_id2 = 1
+            
+                var arr2 = results[0];
+                var count2 = arr2.length
+                var videos2 = 100/count2
+                var videos_vistos2 = 1
+            
+                if (!mul_id2){
+                    console.log(videos_vistos2*videos2)
+                } else {
+                    console.log("Video ya visto");
+                }
+
+            res.render('contenido2', {
+                a_id,
+                titulos2:results[0],
+                contenido2:results[2][1],
+                multimedios2:results[3], 
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }
+}
+
+exports.vistaContenido3 = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query("SELECT mul_id AS m_id, mul_encabezado FROM `tbl_multimedios` WHERE fk_contenido = 3 AND fk_seccion = 2;" + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 3;"+
+                    "SELECT cu_id, cu_descripcion, con_encabezado, con_descripcion FROM tbl_acceso RIGHT JOIN tbl_cursos ON tbl_acceso.a_id = tbl_cursos.fk_acceso LEFT JOIN tbl_contenidos ON tbl_cursos.cu_id = tbl_contenidos.fk_cursos WHERE tbl_cursos.fk_acceso =" + req.session.a_id + " AND tbl_contenidos.fk_cursos= 2 AND fk_seccion = 2 AND con_estado = 1;"+
+                    "SELECT mul_id, mul_encabezado, mul_descripcion, mul_images, mul_URL, mul_fecha FROM `tbl_multimedios` WHERE mul_estado = 1 AND fk_contenido = 3 AND fk_seccion = 2;", [1, 2, 3, 4], function(err, results) {
+            if (err) throw err;
+                var a_id = req.session.a_id
+            
+                var mul_id3 = 1
+            
+                var arr3 = results[0];
+                var count3 = arr3.length
+                var videos3 = 100/count3
+                var videos_vistos3 = 1
+            
+                if (!mul_id3){
+                    console.log(videos_vistos3*videos3)
+                } else {
+                    console.log("Video ya visto");
+                }
+                console.log(results[3])
+            
+            res.render('contenido3', {
+                a_id,
+                titulos3:results[0],
+                contenido3:results[2][2],
+                multimedios3:results[3]
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }
+}
+
+exports.vistaContenido4 = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query("SELECT mul_id AS m_id, mul_encabezado FROM `tbl_multimedios` WHERE fk_contenido = 4 AND fk_seccion = 2;" + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 4;"+
+                    "SELECT cu_id, cu_descripcion, con_encabezado, con_descripcion FROM tbl_acceso RIGHT JOIN tbl_cursos ON tbl_acceso.a_id = tbl_cursos.fk_acceso LEFT JOIN tbl_contenidos ON tbl_cursos.cu_id = tbl_contenidos.fk_cursos WHERE tbl_cursos.fk_acceso =" + req.session.a_id + " AND tbl_contenidos.fk_cursos= 2 AND fk_seccion = 2 AND con_estado = 1;"+
+                    "SELECT mul_id, mul_encabezado, mul_descripcion, mul_images, mul_URL, mul_fecha FROM `tbl_multimedios` WHERE mul_estado = 1 AND fk_contenido = 4 AND fk_seccion = 2;", [1, 2, 3, 4], function(err, results) {
+            if (err) throw err;
+                var a_id = req.session.a_id
+            
+                var mul_id3 = 1
+            
+                var arr3 = results[0];
+                var count3 = arr3.length
+                var videos3 = 100/count3
+                var videos_vistos3 = 1
+            
+                if (!mul_id3){
+                    console.log(videos_vistos3*videos3)
+                } else {
+                    console.log("Video ya visto");
+                }
+                console.log(results[3])
+            
+            res.render('contenido4', {
+                a_id,
+                titulos4:results[0],
+                contenido4:results[2][3],
+                multimedios4:results[3]
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }
+}
+
+exports.vistaContenido5 = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query("SELECT mul_id AS m_id, mul_encabezado FROM `tbl_multimedios` WHERE fk_contenido = 5 AND fk_seccion = 2;" + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 5;"+
+                    "SELECT cu_id, cu_descripcion, con_encabezado, con_descripcion FROM tbl_acceso RIGHT JOIN tbl_cursos ON tbl_acceso.a_id = tbl_cursos.fk_acceso LEFT JOIN tbl_contenidos ON tbl_cursos.cu_id = tbl_contenidos.fk_cursos WHERE tbl_cursos.fk_acceso =" + req.session.a_id + " AND tbl_contenidos.fk_cursos= 2 AND fk_seccion = 2 AND con_estado = 1;"+
+                    "SELECT mul_id, mul_encabezado, mul_descripcion, mul_images, mul_URL, mul_fecha FROM `tbl_multimedios` WHERE mul_estado = 1 AND fk_contenido = 5 AND fk_seccion = 2;", [1, 2, 3, 4], function(err, results) {
+            if (err) throw err;
+                var a_id = req.session.a_id
+            
+                var mul_id3 = 1
+            
+                var arr3 = results[0];
+                var count3 = arr3.length
+                var videos3 = 100/count3
+                var videos_vistos3 = 1
+            
+                if (!mul_id3){
+                    console.log(videos_vistos3*videos3)
+                } else {
+                    console.log("Video ya visto");
+                }
+                console.log(results[3])
+            
+            res.render('contenido5', {
+                a_id,
+                titulos5:results[0],
+                contenido5:results[2][4],
+                multimedios5:results[3]
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }
+}
+
+exports.vistaContenido6 = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query("SELECT mul_id AS m_id, mul_encabezado FROM `tbl_multimedios` WHERE fk_contenido = 6 AND fk_seccion = 2;" + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 6;"+
+                    "SELECT cu_id, cu_descripcion, con_encabezado, con_descripcion FROM tbl_acceso RIGHT JOIN tbl_cursos ON tbl_acceso.a_id = tbl_cursos.fk_acceso LEFT JOIN tbl_contenidos ON tbl_cursos.cu_id = tbl_contenidos.fk_cursos WHERE tbl_cursos.fk_acceso =" + req.session.a_id + " AND tbl_contenidos.fk_cursos= 2 AND fk_seccion = 2 AND con_estado = 1;"+
+                    "SELECT mul_id, mul_encabezado, mul_descripcion, mul_images, mul_URL, mul_fecha FROM `tbl_multimedios` WHERE mul_estado = 1 AND fk_contenido = 6 AND fk_seccion = 2;", [1, 2, 3, 4], function(err, results) {
+            if (err) throw err;
+                var a_id = req.session.a_id
+            
+                var mul_id3 = 1
+            
+                var arr3 = results[0];
+                var count3 = arr3.length
+                var videos3 = 100/count3
+                var videos_vistos3 = 1
+            
+                if (!mul_id3){
+                    console.log(videos_vistos3*videos3)
+                } else {
+                    console.log("Video ya visto");
+                }
+                console.log(results[3])
+            
+            res.render('contenido6', {
+                a_id,
+                titulos6:results[0],
+                contenido6:results[2][5],
+                multimedios6:results[3]
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }
+}
+
+exports.vistaContenido7 = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query("SELECT mul_id AS m_id, mul_encabezado FROM `tbl_multimedios` WHERE fk_contenido = 7 AND fk_seccion = 2;" + 
+                    "SELECT av_estado FROM tbl_estado WHERE av_fecha  = ( SELECT MAX(av_fecha) FROM tbl_estado WHERE fk_acceso =" + req.session.a_id + ") AND fk_contenido = 7;"+
+                    "SELECT cu_id, cu_descripcion, con_encabezado, con_descripcion FROM tbl_acceso RIGHT JOIN tbl_cursos ON tbl_acceso.a_id = tbl_cursos.fk_acceso LEFT JOIN tbl_contenidos ON tbl_cursos.cu_id = tbl_contenidos.fk_cursos WHERE tbl_cursos.fk_acceso =" + req.session.a_id + " AND tbl_contenidos.fk_cursos= 2 AND fk_seccion = 2 AND con_estado = 1;"+
+                    "SELECT mul_id, mul_encabezado, mul_descripcion, mul_images, mul_URL, mul_fecha FROM `tbl_multimedios` WHERE mul_estado = 1 AND fk_contenido = 7 AND fk_seccion = 2;", [1, 2, 3, 4], function(err, results) {
+            if (err) throw err;
+                var a_id = req.session.a_id
+            
+                var mul_id3 = 1
+            
+                var arr3 = results[0];
+                var count3 = arr3.length
+                var videos3 = 100/count3
+                var videos_vistos3 = 1
+            
+                if (!mul_id3){
+                    console.log(videos_vistos3*videos3)
+                } else {
+                    console.log("Video ya visto");
+                }
+                console.log(results[3])
+            
+            res.render('contenido7', {
+                a_id,
+                titulos7:results[0],
+                contenido7:results[2][6],
+                multimedios7:results[3]
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }
+}
+
+exports.perfilUsuarioC = async (req, res)=>{
+    if (req.session.loggedIn) {
+		conexion.query("SELECT * FROM tbl_acceso WHERE a_id = "+ req.session.a_id +";" +
+                    "SELECT * FROM tbl_persona WHERE fk_acceso = "+ req.session.a_id +";"+
+                    "SELECT * FROM tbl_comuna", [1, 2, 3], function(err, results) {
+            if (err) throw err;
+            res.render('perfilUsuario', {
+                perfilUs:results[0][0],
+                perfilPer:results[1][0],
+                comuna:results[2]
+            });
+        });
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }  
+}
+
+exports.perfilUsuario = async (req, res)=>{
+    if (req.session.loggedIn) {
+        const p_rut = req.body.inputRut;
+        const p_nombre = req.body.inputNombre;
+        const p_apellidos = req.body.inputApellido
+        const fk_comuna = req.body.inputComuna
+        const p_direccion = req.body.inputDireccion
+        const p_telefono = req.body.inputFono
+        const p_email = req.body.inputEmail
+        const fk_acceso = req.session.a_id
+        if (p_rut) {
+            conexion.query('INSERT INTO tbl_persona SET ?', {p_rut, p_nombre, p_apellidos, fk_comuna, p_direccion, p_telefono, p_email, fk_acceso}, function(error, result){
+                if (error) throw error;
+                res.redirect('/perfilUsuario')
+            });
+        } else {
+            res.redirect('/contenido1')
+        }
+    } else {
+        // Not logged in
+        res.redirect('/accesoPrincipal')
+    }  
+}
+
+exports.calificacion_video = (req, res)=>{
+
+    if (req.session.loggedIn) {
+        conexion.query("SELECT cal_id, a_id, p_nombre, p_apellidos, p_email, cal_video, cal_pond, cu_descripcion FROM tbl_acceso RIGHT JOIN tbl_persona ON tbl_acceso.a_id = tbl_persona.fk_acceso LEFT JOIN vista_cal_video ON tbl_acceso.a_id = vista_cal_video.fk_persona LEFT JOIN tbl_cursos ON tbl_cursos.cu_id = vista_cal_video.fk_curso WHERE tbl_acceso.a_id =" + req.session.a_id + " AND vista_cal_video.fk_curso = 2;"+
+        "SELECT cal_id, a_id, p_nombre, p_apellidos, p_email, cal_prueba, cal_pond, cu_descripcion FROM tbl_acceso RIGHT JOIN tbl_persona ON tbl_acceso.a_id = tbl_persona.fk_acceso LEFT JOIN vista_cal_prueba ON tbl_acceso.a_id = vista_cal_prueba.fk_persona LEFT JOIN tbl_cursos ON tbl_cursos.cu_id = vista_cal_prueba.fk_curso WHERE tbl_acceso.a_id =" + req.session.a_id + " AND vista_cal_prueba.fk_curso = 2;"+
+        "SELECT sum(cal_pond)/2 as promedio from vista_cal_video where fk_persona =" + req.session.a_id + " and fk_curso = 2;"+
+        "SELECT sum(cal_pond)/2 as promedio from vista_cal_prueba where fk_persona =" + req.session.a_id +" and fk_curso = 2;", [1, 2, 3, 4], function (err, results){
+            // if any error while executing above query, throw error
+            if (err) throw err;
+            // if there is no error, you have the result
+            // iterate for all the rows in 
+            res.render('calificaciones', {vistasCalVideo:results[0], vistaCalContenido:results[1], promediog1:results[2][0].promedio, promediog2:results[3][0].promedio });
+        })
+	} else {
+		// Not logged in
+		res.redirect('/accesoPrincipal')
+	}
 
 }

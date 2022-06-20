@@ -49,7 +49,7 @@ exports.login = async (req, res)=>{
 
         if (user && pass) {
             // Execute SQL query that'll select the account from the database based on the specified username and password
-            conexion.query('SELECT a_id, a_cuenta, a_password, p_rut FROM tbl_acceso INNER JOIN tbl_persona ON tbl_acceso.a_id = tbl_persona.fk_acceso WHERE a_cuenta = ? AND a_password = ? AND fk_tipo=2', [user, pass], function(error, result) {
+            conexion.query('SELECT * FROM tbl_acceso WHERE a_cuenta = ? AND a_password = ? AND fk_tipo=2 AND act_desact=1', [user, pass], function(error, result) {
                 // If there is an issue with the query, output the error
                 if (error) throw error;
                 // If the account exists

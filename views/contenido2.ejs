@@ -1,375 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('templates/header.ejs') %>
+<%- include('templates/header') %>
 
 <body id="page-top">
     <!-- Page Wrapper -->
     <header>
         <!-- NavBar -->
-        <nav class="navbar navbar-dark bg-primary">
-            <a class="navbar-brand" href="#" style="padding-left:0.5em">
-                <img src="img_bicom/planillas/64x64.jpg" width="50" height="50" alt="">
-            </a>
-            <h3 style="padding-right:33em; color: white;">Contenido 2</h3>
-        </nav>
+      <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#" style="padding-left:0.5em">
+          <img src="img_bicom/planillas/64x64.jpg" width="50" height="50" alt="">
+        </a>
+        <h3 style="padding-right:23em; color: rgb(255, 255, 255);"><%= contenido2.cu_descripcion %></h3>
+      </nav>
     </header>
     <div id="wrapper">
-        
-        <%- include('templates/siderbars') %>
+      <%- include('templates/siderbars')%>
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-                <main class="container" role="main">
-                    <div class="bg-light p-5 rounded">
-                      <nav aria-label="breadcrumb active">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item" aria-current="page"><a href="/">Inicio</a></li>
-                        </ol>
-                      </nav>
-                      
-                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Capitulo 1.</h6>
-                      </div>
-                      <div class="card-body">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type 
-                        specimen book. It has survived not only five centuries, but also the leap into 
-                        electronic typesetting, remaining essentially unchanged. It was popularised 
-                        in the 1960s with the release of Letraset sheets containing Lorem Ipsum 
-                        passages, and more recently with desktop publishing software like Aldus 
-                        PageMaker including versions of Lorem Ipsum.
-                      </div>
-                    </div>
-
-                    <!-- Begin Page Content -->
-
-                    <div class="container-fluid">
-                        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                            </div>
-                            <div class="carousel-inner">
-                              <div class="carousel-item active" data-bs-interval="10000">
-                                <div align="center"><img src="img_bicom/planillas/430x300.jpg" class="d-block w-50"></div>
-                                <div class="carousel-caption d-none d-md-block">
-                                  <h5>First slide label</h5>
-                                  <p>Some representative placeholder content for the first slide.</p>
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-video1">
-                                    Ver Video
-                                  </button>
-                                </div>
-                              </div>
-                              <div class="carousel-item" data-bs-interval="2000">
-                                <div align="center"><img src="img_bicom/planillas/430x300.jpg" class="d-block w-50"></div>
-                                <div class="carousel-caption d-none d-md-block">
-                                  <h5>Second slide label</h5>
-                                  <p>Some representative placeholder content for the second slide.</p>
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-video2">Abrir Video 2</button>
-                                </div>
-                              </div>
-                              <div class="carousel-item">
-                                <div align="center"><img src="img_bicom/planillas/430x300.jpg" class="d-block w-50"></div>
-                                <div class="carousel-caption d-none d-md-block">
-                                  <h5>Third slide label</h5>
-                                  <p>Some representative placeholder content for the third slide.</p>
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-video3">Abrir Video 3</button>
-                                </div>
-                              </div>
-                              <div class="carousel-item">
-                                <div align="center"><img src="img_bicom/planillas/430x300.jpg" class="d-block w-50"></div>
-                                <div class="carousel-caption d-none d-md-block">
-                                  <h5>Fourth slide label</h5>
-                                  <p>Some representative placeholder content for the fourth slide.</p>
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-video4">Abrir Video 4</button>
-                                </div>
-                              </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        
-                        <div class="modal fade" id="modal-video1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Video 1</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                                <div class="modal-footer">
-                                  <button id="video_2_1" type="button" class="btn btn-secondary btn_porcentage" porcentage='<%= video1 %>' data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="modal-video2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Video 1</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                                <div class="modal-footer">
-                                  <button id="video_2_2" type="button" class="btn btn-secondary btn_porcentage" porcentage='<%= video2 %>' data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="modal-video3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Video 1</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                                <div class="modal-footer">
-                                  <button id="video_2_3" type="button" class="btn btn-secondary btn_porcentage" porcentage='<%= video3 %>' data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="modal-video4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Video 1</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe width="460" height="215" src="https://www.youtube.com/embed/T5FfnIwiFz4?themes=light" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                                <div class="modal-footer">
-                                  <button id="video_2_4" type="button" class="btn btn-secondary btn_porcentage" porcentage='<%= video4 %>' data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        <div style="padding-left:27em; padding-top: 3em;">
-                            <button id="btnprueba" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal_prueba">Prueba Contenido 1</button>
-                        </div>
-                        <!-- Large modal -->
-                        <div class="modal fade modal_prueba" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Theme: Animals</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div style="padding-top: 1em;">
-                                            <h5>Multiples Choice</h5>
-                                            <p>1.- WHAT ANIMAL MOO.</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta1" id="p11" value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">1. Cow</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta1" id="p12" value="option2">
-                                                <label class="form-check-label" for="inlineCheckbox2">2. Chicken</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta1" id="p13" value="option3">
-                                                <label class="form-check-label" for="inlineCheckbox3">3. Cat</label>
-                                            </div>
-                                            <p>2.- WHAT ANIMAL MEOW.</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta2" id="p21" value="option1">
-                                                <label class="form-check-label" for="p21">1. Cow</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta2" id="p22" value="option2">
-                                                <label class="form-check-label" for="p22">2. Goose</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta2" id="p23" value="option3">
-                                                <label class="form-check-label" for="p23">3. Cat</label>
-                                            </div>
-                                            <p>3.- WHAT ANIMAL CAW.</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta3" id="p31" value="option1">
-                                                <label class="form-check-label" for="p31">1. Cow</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta3" id="p32" value="option2">
-                                                <label class="form-check-label" for="p32">2. Goose</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta3" id="p33" value="option3">
-                                                <label class="form-check-label" for="p33">3. Cat</label>
-                                            </div>
-                                            <p>4.- WHAT ANIMAL TALK.</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta4" id="p41" value="option1">
-                                                <label class="form-check-label" for="p41">1. Cow</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta4" id="p42" value="option2">
-                                                <label class="form-check-label" for="p42">2. Goose</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta4" id="p43" value="option3">
-                                                <label class="form-check-label" for="p43">3. Human</label>
-                                            </div>
-                                            <p>5.- WHAT ANIMAL TRINE.</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta5" id="p51" value="option1">
-                                                <label class="form-check-label" for="p51">1. Thrush</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta5" id="p52" value="option2">
-                                                <label class="form-check-label" for="p52">2. Goose</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta5" id="p53" value="option3">
-                                                <label class="form-check-label" for="p53">3. Human</label>
-                                            </div>
-                                            <p>6.- WHAT ANIMAL RED CHEST.</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta6" id="p61" value="option1">
-                                                <label class="form-check-label" for="p61">1. Thrush</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta6" id="p62" value="option2">
-                                                <label class="form-check-label" for="p62">2. Goose</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta6" id="p63" value="option3">
-                                                <label class="form-check-label" for="p63">3. Lloica</label>
-                                            </div>
-                                            <p>7.- WHAT ANIMAL TO FISH.</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta7" id="p71" value="option1">
-                                                <label class="form-check-label" for="p71">1. KINGFISHER</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta7" id="p72" value="option2">
-                                                <label class="form-check-label" for="p72">2. Goose</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="pregunta7" id="p73" value="option3">
-                                                <label class="form-check-label" for="p73">3. Lloica</label>
-                                            </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="button" class="btn btn-primary" data-dismiss="modal" value=" Resultado" onclick="resultado()"/>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <!-- /.container-fluid -->
-                    </div>
-                </main>
-
+        <!-- Main Content -->
+        <div id="content">
+          <main class="container" role="main">
+              <div class="bg-light p-5 rounded">
+                <nav aria-label="breadcrumb active">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">Inicio</a></li>
+                  </ol>
+                </nav>
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"><%= contenido2.con_encabezado %></h6>
+                </div>
+                <div class="card-body">
+                  <%= contenido2.con_descripcion %>
+                  <hr></hr>
+                  <h6>Contenido de los Videos</h6>
+                  <ul>
+                  <%titulos2.forEach((tit2)=>{%>
+                  <li><%- tit2.mul_encabezado%></li>
+                  <%})%>
+                  </ul> 
+                </div>
             </div>
-            <!-- End of Main Content -->
-
-            <%- include('templates/footer')%>
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+						  <!-- Carousel wrapper -->
+              <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="10000">
+                    <div align="center"><img src="img_bicom/planillas/590x392.jpg" class="d-block"></div>
+									  <div class="carousel-caption d-none d-md-block">
+                      <h5>Sistema de videos.</h5>
+                      <p>Bienvenidos a nuestro sistema de video tutoriales.</p>
+                      <button type="button" class="btn btn-primary">
+                      Adelante.
+                      </button>
+									  </div>
+                  </div>
+							    <% multimedios2.forEach((multi2)=>{ %>
+                  <div class="carousel-item" data-bs-interval="2000">
+                    
+                    <div align="center"><img src="img_bicom/planillas/<%- multi2.mul_images%>" class="d-block"></div>
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5><%- multi2.mul_encabezado %></h5>
+                      <p><%- multi2.mul_descripcion %></p>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-video<%- multi2.mul_id%>">Abrir Video <%- multi2.mul_id%></button>
+                    </div>
+                  </div>
+							    <div class="modal fade" id="modal-video<%- multi2.mul_id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+								    <div class="modal-dialog modal-dialog-centered" role="document">
+								      <div class="modal-content">
+									      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Video<%- multi2.mul_id%></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+									      </div>
+                        <div class="modal-body">
+                          <iframe width="460" height="215" src="<%- multi2.mul_URL%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <form id="FormAv1" class="tipo" action="/contenido2" method="POST">
+                          <input type="text" class="form-control" id="av_descripcion" name="av_descripcion" value='video1_1' hidden>
+                          <input type="text" class="form-control" id="av_estado" name="av_estado" value='25' hidden>
+                          <input type="text" class="form-control" id="fk_acceso" name="fk_acceso" value='<%= a_id %>' hidden>
+                          <input type="text" class="form-control" id="fk_acceso" name="fk_contenido" value='1' hidden>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" id="video_1_1" type="button" class="btn btn-secondary btn_porcentaje" porcentaje='25' data-dismiss="modal">Close</button>
+                          </div>
+                        </form>
+								      </div>
+								    </div>
+                    
+							    </div>
+							    <% }) %>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <div style="padding-left:27em; padding-top: 3em;">
+                <button id="btnprueba" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal_prueba">Prueba Contenido 1</button>
+              </div>
+              <!-- Large modal -->
+              <div class="modal fade modal_prueba" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Theme: Animals</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div style="padding-top: 1em;">
+                          <h5>Multiples Choice</h5>
+                          <p>1.- WHAT ANIMAL MOO.</p>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta1" id="p11" value="option1">
+                          <label class="form-check-label" for="inlineCheckbox1">1. Cow</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta1" id="p12" value="option2">
+                          <label class="form-check-label" for="inlineCheckbox2">2. Chicken</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta1" id="p13" value="option3">
+                          <label class="form-check-label" for="inlineCheckbox3">3. Cat</label>
+                        </div>
+                        <p>2.- WHAT ANIMAL MEOW.</p>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta2" id="p21" value="option1">
+                          <label class="form-check-label" for="p21">1. Cow</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta2" id="p22" value="option2">
+                          <label class="form-check-label" for="p22">2. Goose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta2" id="p23" value="option3">
+                          <label class="form-check-label" for="p23">3. Cat</label>
+                        </div>
+                        <p>3.- WHAT ANIMAL CAW.</p>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta3" id="p31" value="option1">
+                          <label class="form-check-label" for="p31">1. Cow</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta3" id="p32" value="option2">
+                          <label class="form-check-label" for="p32">2. Goose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta3" id="p33" value="option3">
+                          <label class="form-check-label" for="p33">3. Cat</label>
+                        </div>
+                        <p>4.- WHAT ANIMAL TALK.</p>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta4" id="p41" value="option1">
+                          <label class="form-check-label" for="p41">1. Cow</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta4" id="p42" value="option2">
+                          <label class="form-check-label" for="p42">2. Goose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta4" id="p43" value="option3">
+                          <label class="form-check-label" for="p43">3. Human</label>
+                        </div>
+                        <p>5.- WHAT ANIMAL TRINE.</p>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta5" id="p51" value="option1">
+                          <label class="form-check-label" for="p51">1. Thrush</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta5" id="p52" value="option2">
+                          <label class="form-check-label" for="p52">2. Goose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta5" id="p53" value="option3">
+                          <label class="form-check-label" for="p53">3. Human</label>
+                        </div>
+                        <p>6.- WHAT ANIMAL RED CHEST.</p>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta6" id="p61" value="option1">
+                          <label class="form-check-label" for="p61">1. Thrush</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta6" id="p62" value="option2">
+                          <label class="form-check-label" for="p62">2. Goose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta6" id="p63" value="option3">
+                          <label class="form-check-label" for="p63">3. Lloica</label>
+                        </div>
+                        <p>7.- WHAT ANIMAL TO FISH.</p>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta7" id="p71" value="option1">
+                          <label class="form-check-label" for="p71">1. KINGFISHER</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta7" id="p72" value="option2">
+                          <label class="form-check-label" for="p72">2. Goose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="pregunta7" id="p73" value="option3">
+                          <label class="form-check-label" for="p73">3. Lloica</label>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                          <input type="button" class="btn btn-primary" data-dismiss="modal" value=" Resultado" onclick="resultado()"/>
+                          <button id="video_1_4" type="button" class="btn btn-secondary btn_examen" porcentaje="14" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- /.container-fluid -->
+            </div>
+          </main>
+        </div>
+        <!-- End of Main Content -->
+      <%- include('templates/footer')%>
+      </div>
+      <!-- End of Content Wrapper -->
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
-    </a>
-        <!-- Bootstrap core JavaScript-->
-        <script src="/assets/vendor/jquery/jquery.min.js"></script>
-        <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-        <!-- JavaScript Bundle with Popper -->
-        <script src="/js/bootstrap.bundle.min.js"></script>
-    
-        <!-- Core plugin JavaScript-->
-        <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    
-        <!-- Custom scripts for all pages-->
-        <script src="/assets/js/sb-admin-2.min.js"></script>
-    
-        <!-- Page level custom scripts -->
-        <script src="/js/youtube.js"></script>
-        <script>
-            $(".btn_porcentage").on("click", function(){
-              if($("#barra_especifica2").width() == 0){
-                $('#barra_especifica2').css('width', $(this).attr('porcentage')+'%')
-              } else {
-                const barra = $("#barra_especifica2").width() / $('#barra_especifica2').parent().width() * 100;
-                if(barra< $(this).attr('porcentage')){
-                  $('#barra_especifica2').css('width', $(this).attr('porcentage')+'%')
-                }
-              }
-              $('#barra_especifica2').text($(this).attr('porcentage')+'%');
-            })
-        </script>
-        <script>
-          function resultado() {
-            var p1, p2, p3, p4, p5, p6, p7, nota;
-            //<!-- 1ª pregunta -->
-            if (document.getElementById('p11').checked==true) {p1=7}
-            else {p1=1}
-            //<!-- 2ª pregunta -->
-            if (document.getElementById('p23').checked==true) {p2=7}
-            else {p2=1}
-            //<!-- 3ª pregunta -->
-            if (document.getElementById('p32').checked==true) {p3=7}
-            else {p3=1}
-            //<!-- 4ª pregunta -->
-            if (document.getElementById('p43').checked==true) {p4=7}
-            else {p4=1}
-            //<!-- 4ª pregunta -->
-            if (document.getElementById('p51').checked==true) {p5=7}
-            else {p5=1}
-            //<!-- 4ª pregunta -->
-            if (document.getElementById('p63').checked==true) {p6=7}
-            else {p6=1}
-            //<!-- 4ª pregunta -->
-            if (document.getElementById('p71').checked==true) {p7=7}
-            else {p7=1}
-            nota=(p1+p2+p3+p4+p5+p6+p7)/7;
-            var puntodecimal = nota.toFixed(1);
-            alert(" Nota: " + puntodecimal);
-    
-            const btnprueba = document.getElementById('btnprueba');
-            btnprueba.disabled = true;
-            $(".modal_prueba").modal('dispose');
-          }
-        </script>
+      </a>
+
+      <!-- Bootstrap core JavaScript-->
+      <script src="/assets/vendor/jquery/jquery.min.js"></script>
+      <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+      <!-- JavaScript Bundle with Popper -->
+      <script src="/js/bootstrap.bundle.min.js"></script>
+  
+      <!-- Core plugin JavaScript-->
+      <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  
+      <!-- Custom scripts for all pages-->
+      <script src="/assets/js/sb-admin-2.min.js"></script>
+  
+      <!-- Page level custom scripts -->
+      <script src="/js/youtube.js"></script>
+      <script src="canvas/js/plugins.js"></script>
+      
+      <!-- Footer Scripts
+      ============================================= -->
+      <script src="canvas/js/functions.js"></script>
+      <script>
+         $(".btn_porcentaje").on("click", function(){
+           if($("#barra_especifica1").width() == 0){
+             $('#barra_especifica1').css('width', $(this).attr('porcentaje')+'%')
+           } else {
+           const barra = $("#barra_especifica1").width() / $('#barra_especifica1').parent().width() * 100;
+           if(barra< $(this).attr('porcentaje')){
+             $('#barra_especifica1').css('width', $(this).attr('porcentaje')+'%')
+             }
+           }
+           $('#barra_especifica1').text($(this).attr('porcentaje')+'%');
+           $("#FormAv1").submit(); // Submit the form
+         })
+         $(".btn_examen").on("click", function(){
+           if($("#barra_general").width() == 0){
+             $('#barra_general').css('width', $(this).attr('porcentaje')+'%')
+           }else{
+             const barra = $("#barra_general").width() / $('#barra_general').parent().width() * 100;
+             if(barra< $(this).attr('porcentaje')){
+               $('#barra_general').css('width', $(this).attr('porcentaje')+'%')
+             }
+           }
+           $('#barra_general').text($(this).attr('porcentaje')+'%');
+         })
+
+      </script>
+      <script>
+        function resultado() {
+          var p1, p2, p3, p4, p5, p6, p7, nota;
+          //<!-- 1ª pregunta -->
+          if (document.getElementById('p11').checked==true) {p1=7}
+          else {p1=1}
+          //<!-- 2ª pregunta -->
+          if (document.getElementById('p23').checked==true) {p2=7}
+          else {p2=1}
+          //<!-- 3ª pregunta -->
+          if (document.getElementById('p32').checked==true) {p3=7}
+          else {p3=1}
+          //<!-- 4ª pregunta -->
+          if (document.getElementById('p43').checked==true) {p4=7}
+          else {p4=1}
+          //<!-- 4ª pregunta -->
+          if (document.getElementById('p51').checked==true) {p5=7}
+          else {p5=1}
+          //<!-- 4ª pregunta -->
+          if (document.getElementById('p63').checked==true) {p6=7}
+          else {p6=1}
+          //<!-- 4ª pregunta -->
+          if (document.getElementById('p71').checked==true) {p7=7}
+          else {p7=1}
+          nota=(p1+p2+p3+p4+p5+p6+p7)/7;
+          var puntodecimal = nota.toFixed(1);
+          alert(" Nota: " + puntodecimal);
+  
+          const btnprueba = document.getElementById('btnprueba');
+          btnprueba.disabled = true;
+          $(".modal_prueba").modal('dispose');
+        }
+      </script>
+
 </body>
 </html>
